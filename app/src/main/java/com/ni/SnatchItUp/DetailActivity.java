@@ -795,7 +795,7 @@ public class DetailActivity extends BaseActivity implements OnClickListener, Par
             likeImg.setVisibility(View.VISIBLE);
             chat.setVisibility(View.VISIBLE);
             isSeller = false;
-//            setBuyerChatCta(chat, getString(R.string.snatch_it_up));
+            setBuyerChatCta(chat, getString(R.string.snatch_it_up));
             if (Constants.BUYNOW) {
                 offer.setText(getString(R.string.instantbuy));
                 if (itemMap.getInstantBuy().equals("0") || itemMap.getInstantBuy().equals("2")

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_height="match_parent"
+     android:layout_width="match_parent"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.otaliastudios.printer.DocumentTextView
+            style="@style/Text.Subtitle"
+            android:id="@+id/headerPrinterLeft"
+            android:layout_width="0dp"
+            android:layout_gravity="start"
+            android:gravity="start"
+            android:layout_weight="1.5"
+            android:layout_height="wrap_content"
+            />
+        <com.otaliastudios.printer.DocumentTextView
+            style="@style/Text.Subtitle"
+            android:id="@+id/headerPrinterRight"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.otaliastudios.printer.DocumentTextView
+            style="@style/Text.TitleHeaad"
+            android:id="@+id/headerPrinterOrder"
+            android:layout_width="match_parent"
+            android:layout_gravity="start"
+            android:gravity="start"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:weightSum="2"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.otaliastudios.printer.DocumentTextView
+            style="@style/Text.Subtitle"
+            android:id="@+id/headerPrinterPaymentMethod"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            />
+        <com.otaliastudios.printer.DocumentTextView
+            style="@style/Text.Subtitle"
+            android:id="@+id/headerPrinterPaymentStatus"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/secondaryText"
+        android:layout_height="1dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.25"
+            android:orientation="vertical">
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.Title"
+                android:text="Buyers Details"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/font_bold"
+                android:layout_height="wrap_content"
+                />
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.TitleSub"
+                android:text="Buyers Name"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/font_bold"
+                android:layout_height="wrap_content"
+                />
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.Subtitle"
+                android:id="@+id/printerBuyerEmail"
+                android:layout_width="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:layout_height="wrap_content"
+                />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.25"
+            android:orientation="vertical">
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.Title"
+                android:text="Shipping Address"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/font_bold"
+                android:layout_height="wrap_content"
+                />
+
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.TitleSub"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:id="@+id/printerBuyerName"
+                android:fontFamily="@font/font_bold"
+                android:layout_height="wrap_content"
+                />
+
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.Subtitle"
+                android:id="@+id/printerBuyerAddress"
+                android:layout_width="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:layout_height="wrap_content"
+                />
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.Subtitle"
+                android:id="@+id/printerBuyerPhone"
+                android:layout_width="wrap_content"
+
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:layout_height="wrap_content"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/secondaryText"
+        android:layout_height="1dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.25"
+            android:orientation="vertical">
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.TitleSub"
+                android:text="Item Name"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/font_bold"
+                android:layout_height="wrap_content"
+                />
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.Subtitle"
+                android:id="@+id/printerProductName"
+                android:layout_width="match_parent"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.25"
+            android:orientation="vertical">
+
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.TitleSub"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:id="@+id/printerItemUnitPrice"
+                android:fontFamily="@font/font_bold"
+                android:layout_height="wrap_content"
+                />
+
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.TitleSub"
+                android:layout_width="match_parent"
+                android:id="@+id/printerItemShippingFee"
+                android:fontFamily="@font/font_bold"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/secondaryText"
+                android:layout_height="1dp"
+                />
+
+            <com.otaliastudios.printer.DocumentTextView
+                style="@style/Text.TitleSub"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:id="@+id/printerItemTotalPrice"
+                android:fontFamily="@font/font_bold"
+                android:layout_height="wrap_content"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/secondaryText"
+                android:layout_height="1dp"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:gravity="bottom"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.otaliastudios.printer.DocumentTextView
+            style="@style/Text.Subtitle"
+            android:id="@+id/footerPrinterLeft"
+            android:layout_width="0dp"
+            android:layout_gravity="start"
+            android:gravity="start"
+            android:layout_weight="1.5"
+            android:layout_height="wrap_content"
+            />
+        <com.otaliastudios.printer.DocumentTextView
+            style="@style/Text.Subtitle"
+            android:id="@+id/footerPrinterRight"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

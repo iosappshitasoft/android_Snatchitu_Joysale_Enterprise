@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/chat_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/actionbar_activity"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/sendMsgLay"
+        android:layout_below="@id/actionbar"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/chat_bg"
+            android:cacheColorHint="#00000000"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:listSelector="@android:color/transparent"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <com.ni.external.CustomTextView
+        android:id="@+id/dateTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/actionbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_corner_primary"
+        android:paddingStart="12dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="5dp"
+        android:text="Jan 1st 2015"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:fonts="font_regular.ttf" />
+
+    <RelativeLayout
+        android:id="@+id/blockUserLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/actionbar"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorSecondary"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorSecondary">
+
+            <ImageView
+                android:id="@+id/blockicon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/block_usr" />
+
+            <com.ni.external.CustomTextView
+                android:id="@+id/blockMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/blockicon"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:singleLine="true"
+                android:text="@string/block_user_msg"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/gph_white"
+                app:fonts="font_regular.ttf" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progress"
+        android:layout_width="@dimen/progress_size"
+        android:layout_height="@dimen/progress_size"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/progressColor"
+        app:indicatorName="BallPulseIndicator" />
+
+    <LinearLayout
+        android:id="@+id/sendMsgLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom"
+        android:layoutDirection="@string/layout_direction"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/smartRepliesRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chat_bg"
+            android:orientation="horizontal"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/smart_reply_chip" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:gravity="center_vertical"
+        android:layoutDirection="ltr"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/search_layout_bkg"
+            android:gravity="bottom"
+            android:padding="10dp">
+
+            <com.ni.external.CustomEditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/sendLay"
+                android:background="@drawable/edittext_layout_bkg"
+                android:gravity="top"
+                android:hint="@string/writemessage"
+                android:textColorHint="@color/primaryText4"
+                android:textColor="@color/primaryText4"
+                android:inputType="textCapSentences|textMultiLine|text"
+                android:isScrollContainer="true"
+                android:maxLength="500"
+                android:maxLines="4"
+                android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="@dimen/text_large"
+                app:fonts="font_regular.ttf" />
+
+            <LinearLayout
+                android:id="@+id/sendLay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/shareImg"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:src="@drawable/attach" />
+
+                <ImageView
+                    android:id="@+id/sharelocation"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:src="@drawable/location_icon" />
+
+                <ImageView
+                    android:id="@+id/btngif"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="7dp"
+                    android:src="@drawable/gif"
+                    android:visibility="gone" />
+
+
+                <ImageView
+                    android:id="@+id/send"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/primary_roundcorner"
+                    android:padding="10dp"
+                    android:src="@drawable/chat_send_btn"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+
+            <!--Addon Voice Message-->
+            <com.devlomi.record_view.RecordButton
+                android:id="@+id/btnRecord"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/primary_roundcorner"
+                android:scaleType="centerInside"
+                android:visibility="gone"
+                app:mic_icon="@drawable/recv_ic_mic_white" />
+
+            <com.devlomi.record_view.RecordView
+                android:id="@+id/recordView"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignTop="@+id/editText"
+                android:layout_alignBottom="@+id/editText"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="22dp"
+                android:layout_toStartOf="@+id/btnRecord"
+                android:visibility="visible"
+                app:counter_time_color="#ff0000"
+                app:slide_to_cancel_arrow="@drawable/recv_ic_arrow"
+                app:slide_to_cancel_arrow_color="#000000"
+                app:slide_to_cancel_bounds="8dp"
+                app:slide_to_cancel_text="Slide To Cancel" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

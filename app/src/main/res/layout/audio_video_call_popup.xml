@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <com.ni.addons.LocaleFontView
+            android:id="@+id/title_audiovideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="normal"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="15dp"
+            android:text="@string/makeCall"/>
+
+
+        <RelativeLayout
+            android:id="@+id/mainlay"
+            android:layout_below="@+id/title_audiovideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/videolay"
+                    android:layout_width="0dp"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/videoimage"
+                        android:layout_width="40dp"
+                        android:layout_marginEnd="35dp"
+                        android:layout_height="40dp"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/phonecallvideoicon"/>
+
+                    <com.ni.addons.LocaleFontView
+                        android:id="@+id/videotext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/video"
+                        android:layout_marginEnd="25dp"
+                        android:textSize="15dp"
+                        android:padding="10dp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/audiolay"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/audioimage"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="35dp"
+                        android:tint="@color/colorPrimary"
+                        android:padding="5dp"
+                        android:src="@drawable/phonecallicon"/>
+
+                    <com.ni.addons.LocaleFontView
+                        android:id="@+id/audiotext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/audio"
+                        android:textSize="15dp"
+                        android:layout_marginStart="25dp"
+                        android:padding="10dp"
+                        android:layout_marginTop="2dp"
+                        android:textStyle="normal" />
+
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <com.ni.addons.LocaleFontView
+            android:id="@+id/cancelbtn"
+            android:layout_below="@+id/mainlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/cancel"
+            android:visibility="gone"
+            android:padding="5dp"
+            android:textStyle="normal"
+            android:textSize="15dp"/>
+
+
+    </RelativeLayout>
+</RelativeLayout>

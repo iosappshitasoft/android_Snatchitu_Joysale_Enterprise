@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.ni.external.CustomTextView
+        android:id="@+id/labelUpload"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="@dimen/text_large"
+        android:text="Storage Permission"
+        android:textAlignment="center"
+        app:fonts="font_bold.ttf"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/container_camera_option"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:focusable="true"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintTop_toBottomOf="@id/labelUpload"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.ni.external.CustomTextView
+            android:id="@+id/bottom_sheet_des"
+            android:layout_width="match_parent"
+            app:fonts="font_regular.ttf"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:textAlignment="center"
+            android:text="@string/description"
+            android:textSize="@dimen/text_large" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/container_gallery_option"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:weightSum="2"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:layout_marginTop="10dp"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintTop_toBottomOf="@id/container_camera_option"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/layoutCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="17dp"
+            android:background="@color/colorSecondary"
+            android:layout_weight="1">
+            <com.ni.external.CustomTextView
+                android:layout_width="wrap_content"
+                app:fonts="font_regular.ttf"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text="Cancel"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_large" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layoutAllow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="17dp"
+            android:background="@color/colorPrimary"
+            android:layout_weight="1">
+            <com.ni.external.CustomTextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                app:fonts="font_regular.ttf"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Allow"
+                android:textSize="@dimen/text_large" />
+        </RelativeLayout>
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

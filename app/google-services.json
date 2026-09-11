@@ -1,0 +1,108 @@
+{
+  "project_info": {
+    "project_number": "617783976080",
+    "project_id": "snatchitup",
+    "storage_bucket": "snatchitup.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617783976080:android:3be9fb902dd0474a547815",
+        "android_client_info": {
+          "package_name": "com.app.snatchitup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617783976080-jgb7oapu3r26s5t7h22gkg8qjd22fn0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.snatchitup",
+            "certificate_hash": "2cddf24aa09fad618f19e9cbcaba4dd826c7cead"
+          }
+        },
+        {
+          "client_id": "617783976080-7snik4ql9prep1ongm0qkft8t8sv8kv8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjC2_lWIq5L-UkKlM4fxs7JbKojG-RV4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617783976080-7snik4ql9prep1ongm0qkft8t8sv8kv8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "617783976080-msuist485hpj3mru4kqn2khp4dtpqh5k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ni.SnatchItUp",
+                "app_store_id": "6748019184"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617783976080:android:6adcd4a92e5206da547815",
+        "android_client_info": {
+          "package_name": "com.ni.SnatchItUp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617783976080-ad8ahq83uc93gjp651mhlafrraap41cp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ni.SnatchItUp",
+            "certificate_hash": "23f51ddcf4b86553665aba735c76abb1da7be965"
+          }
+        },
+        {
+          "client_id": "617783976080-pt35p0jeibmo0b0n225upm0b4j718rf2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ni.SnatchItUp",
+            "certificate_hash": "046c50142a4004e29ed614eaf66e5c2ec83dc2d5"
+          }
+        },
+        {
+          "client_id": "617783976080-7snik4ql9prep1ongm0qkft8t8sv8kv8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjC2_lWIq5L-UkKlM4fxs7JbKojG-RV4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617783976080-7snik4ql9prep1ongm0qkft8t8sv8kv8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "617783976080-msuist485hpj3mru4kqn2khp4dtpqh5k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ni.SnatchItUp",
+                "app_store_id": "6748019184"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

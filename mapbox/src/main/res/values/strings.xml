@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Mapbox</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoicGhvbmZhbmF0aXgiLCJhIjoiY2w2ejNsZTEwMDBsbzNxcWdmMTJ4djYzMiJ9.T2-gSQyVMTGZiNJppZTQcg</string>
+    <string name="search">Search</string>
+    <string name="world_wide">World wide</string>
+    <string name="set_location">Set location</string>
+    <string name="layout_direction" translatable="false">0</string>
+    <string name="default_country_name">India</string>
+    <string name="default_country_code">IN</string>
+    <string name="share">Share</string>
+</resources>

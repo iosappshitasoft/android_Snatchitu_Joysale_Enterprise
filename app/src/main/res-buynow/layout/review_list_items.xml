@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="@string/layout_direction"
+    android:orientation="vertical"
+    android:paddingBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <com.ni.external.RoundedImageView
+            android:id="@+id/userImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:adjustViewBounds="true"
+            android:gravity="center_horizontal"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="100dip"
+            app:riv_mutate_background="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+
+            <com.ni.external.CustomTextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="Jenifer lopez"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/primaryText"
+                app:fonts="font_regular.ttf" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="235dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/userName"
+                android:layout_marginRight="-145dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="3.5"
+                android:scaleX=".4"
+                android:scaleY=".4"
+                android:stepSize="1"
+                android:theme="@style/RatingBar"
+                android:transformPivotX="-1dp"
+                android:transformPivotY="0dp" />
+
+            <com.ni.external.CustomTextView
+                android:id="@+id/itemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userName"
+                android:layout_marginTop="25dp"
+                android:text="Jenifer lopez buying the product"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/secondaryText"
+                app:fonts="font_regular.ttf" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/itemName"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider" />
+
+            <com.ni.external.CustomTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view"
+                android:maxLines="1"
+                android:text="Nice product"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/primaryText"
+                app:fonts="font_regular.ttf" />
+
+            <com.ni.external.CustomTextView
+                android:id="@+id/review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginTop="8dp"
+                android:text="Please don't belive in 1 star reviews stating weird reasons like screen is small or that you only get 25 gb free"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/secondaryText"
+                app:fonts="font_regular.ttf" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

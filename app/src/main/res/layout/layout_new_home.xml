@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="@string/layout_direction"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/special_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layoutDirection="@string/layout_direction">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:layoutDirection="@string/layout_direction">
+            <TextView
+                android:id="@+id/specialitytxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gaming"
+                android:textSize="@dimen/text_next_normal"
+                android:layoutDirection="@string/layout_direction"
+                android:textStyle="bold"
+                android:textColor="@color/brand_text_color"
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/view_all"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_before_normal"
+                android:layoutDirection="@string/layout_direction"
+                android:textColor="@color/colorPrimary"
+                android:textAlignment="viewEnd"
+                android:id="@+id/showall"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/doctor_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:visibility="visible"
+            android:clipToPadding="false"
+            android:paddingStart="9dp"
+            android:layoutDirection="@string/layout_direction"
+            android:paddingBottom="3dp"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

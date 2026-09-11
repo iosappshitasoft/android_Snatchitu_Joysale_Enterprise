@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_bg"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <com.ni.external.CustomTextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_regular"
+        android:gravity="center"
+        android:lineSpacingExtra="5dp"
+        android:maxLines="3"
+        android:padding="10dp"
+        android:text=""
+        android:textColor="@color/primaryText"
+        app:fonts="font_regular.ttf" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <com.ni.external.CustomTextView
+            android:id="@+id/no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/secondary_curve_corner"
+            android:backgroundTint="@color/divider"
+            android:fontFamily="@font/font_regular"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/nope"
+            android:textColor="@color/primaryText"
+            android:textSize="@dimen/text_size_medium"
+            app:fonts="font_regular.ttf" />
+
+        <com.ni.external.CustomTextView
+            android:id="@+id/yes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/primary_curve_corner"
+            android:fontFamily="@font/font_regular"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/yes"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_medium"
+            app:fonts="font_regular.ttf" />
+    </LinearLayout>
+
+</LinearLayout>

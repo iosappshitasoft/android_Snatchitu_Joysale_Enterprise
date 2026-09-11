@@ -1,0 +1,418 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="PaymentTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+    <style name="NavigationDrawerStyle">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowAnimationStyle">@style/AlertDialogAnimation</item>
+    </style>
+
+    <style name="TextPrimaryRegular" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/font_regular</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="SimpleBottomDialog" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">@color/colorBottomNavigation</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="statusBarScrim">@color/white</item>
+        <item name="bottomSheetStyle">@style/BottomSheetWhite</item>
+    </style>
+
+    <style name="BottomSheetWhite" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="android:background">@drawable/bottom_sheet_white_bg</item>
+    </style>
+
+
+
+    <!-- Theme.AppCompat.Light is not a dialog theme -->
+    <style name="DatePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="AlertDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_top</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_top</item>
+    </style>
+
+    <!-- Without actionbar theme. -->
+    <style name="MainActivityTheme" parent="@style/Theme.MaterialComponents.NoActionBar.Bridge">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/secondaryText</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <!-- Without actionbar theme. -->
+<!--
+    <style name="AppCusTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        &lt;!&ndash; Customize your theme here. &ndash;&gt;
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/secondaryText</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+-->
+
+    <style name="AppCusTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--  Customize your theme here.  -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/secondaryText</item>
+        <!--         <item name="android:windowActionBarOverlay">true</item> -->
+
+        <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
+    </style>
+
+    <style name="WelcomeCustom" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/white_transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="LoginTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="CameraTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/secondaryText</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="WhiteTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="PostDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/abc_slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/abc_slide_out_bottom</item>
+    </style>
+
+    <style name="PostDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/PostDialogAnimation</item>
+    </style>
+
+    <style name="DialogSlideAnim" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up_dialog</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_down</item>
+    </style>
+
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Active thumb color & Active track color(30% transparency) -->
+        <item name="colorControlActivated">@color/colorPrimary2</item>
+        <!-- Inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/secondaryText</item>
+        <!-- Inactive track color(30% transparency) -->
+        <item name="android:colorForeground">@color/secondaryText</item>
+    </style>
+
+    <style name="TextLabel" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColorHint">@color/secondaryText</item>
+        <item name="colorControlNormal">@color/secondaryText</item>
+        <item name="colorControlActivated">@color/secondaryText</item>
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/starColor</item>
+        <item name="colorControlActivated">@color/starColor</item>
+    </style>
+
+ <style name="RatingBarPrimary" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="WhiteRatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="MyTabText.Title" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="PromotionViewPager" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="MultipleImageSelectTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/multiple_image_select_primary</item>
+        <item name="colorPrimaryDark">@color/multiple_image_select_primary</item>
+        <item name="colorAccent">@color/multiple_image_select_accent</item>
+        <item name="colorControlNormal">@color/primary</item>
+
+        <item name="actionModeStyle">@style/CustomActionModeStyle</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionMenuTextColor">@color/primary</item>
+    </style>
+
+    <style name="CustomActionModeStyle" parent="Base.Widget.AppCompat.ActionMode">
+        <item name="background">@color/multiple_image_select_primary</item>
+        <item name="titleTextStyle">@style/ActionModeTitle</item>
+    </style>
+
+    <style name="ActionModeTitle" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="CustomToolbarTheme" parent="Base.ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/primary</item>
+        <item name="android:textColorSecondary">@color/primary</item>
+        <item name="colorControlNormal">@color/primary</item>
+    </style>
+
+    <style name="ScrollingPagerIndicator">
+        <item name="spi_dotColor">@android:color/darker_gray</item>
+        <item name="spi_dotSelectedColor">@android:color/darker_gray</item>
+        <item name="spi_dotSize">6dp</item>
+        <item name="spi_dotSelectedSize">10dp</item>
+        <item name="spi_dotSpacing">8dp</item>
+        <item name="spi_visibleDotCount">5</item>
+        <item name="spi_visibleDotThreshold">2</item>
+        <item name="spi_looped">false</item>
+    </style>
+
+    <style name="SmallProgress" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:progressBarStyleSmall">@color/progressColor</item>
+        <item name="android:indeterminate">true</item>
+    </style>
+
+    <style name="OTPTheme" parent="FirebaseUI">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColor">@color/primaryText</item>
+    </style>
+
+    <style name="FirebaseUI.VerifyPhoneButton" parent="FirebaseUI.Button">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/gph_white</item>
+
+    </style>
+
+
+    <style name="FirebaseUI.TextInputEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/secondaryText</item>
+        <item name="android:textColor">@color/primaryText</item>
+
+    </style>
+
+    <style name="FirebaseUI.CountrySpinner" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/primaryText</item>
+    </style>
+
+    <style name="FirebaseUI.Text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="editTextColor">@color/primaryText</item>
+        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
+    <style name="AppTheme.CardTheme">
+        <item name="android:textColorHint">@color/secondaryText</item>
+        <item name="android:textColor">@color/primaryText</item>
+    </style>
+
+    <style name="Bottom.FilterDialog" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">@drawable/white_roundcorner</item>
+    </style>
+
+    <style name="CalendarTitle">
+        <item name="android:textSize">@dimen/calendar_text_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingBottom">@dimen/calendar_month_title_bottommargin</item>
+        <item name="android:paddingTop">@dimen/calendar_month_topmargin</item>
+    </style>
+
+    <style name="CalendarCell">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
+    </style>
+
+    <style name="CalendarCell.DayHeader">
+        <item name="android:textSize">@dimen/calendar_text_small</item>
+    </style>
+
+    <style name="CalendarCell.CalendarDate">
+        <item name="android:textSize">@dimen/calendar_text_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CalendarCell.SubTitle">
+        <item name="android:textSize">@dimen/calendar_text_small</item>
+        <item name="android:textColor">@color/calendar_text_active</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">40dp</item>
+    </style>
+
+
+    <style name="SenderSeekBar" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="ReceiverSeekBar" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="Text" parent="TextAppearance.AppCompat" >
+        <item name="android:paddingLeft">12pt</item>
+        <item name="android:paddingRight">12pt</item>
+    </style>
+
+    <style name="Text.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="Text.TitleHeaad">
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">25dp</item>
+    </style>
+
+
+    <style name="Text.TitleSub">
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">17dp</item>
+    </style>
+
+    <style name="Text.Subtitle">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">?android:attr/textColorTertiary</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="Text.Header1">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">16pt</item>
+        <item name="android:layout_marginTop">24pt</item>
+    </style>
+
+
+    <style name="Text.Header2">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">11.5pt</item>
+        <item name="android:layout_marginTop">6pt</item>
+        <item name="android:layout_marginBottom">12pt</item>
+    </style>
+
+    <style name="Text.Paragraph">
+        <!-- item name="android:breakStrategy">high_quality</item -->
+        <!-- item name="android:justificationMode">inter_word</item -->
+        <item name="android:textIsSelectable">true</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">13pt</item>
+        <item name="android:layout_marginTop">8pt</item>
+    </style>
+
+    <style name="Text.Paragraph.RightAlign">
+        <!-- item name="android:justificationMode">none</item -->
+        <item name="android:gravity">end</item>
+    </style>
+
+
+    <style name="CustomSquareShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">30dp</item>
+        <item name="cornerSizeTopRight">30dp</item>
+        <item name="cornerSizeBottomLeft">30dp</item>
+        <item name="cornerSizeBottomRight">30dp</item>
+    </style>
+
+</resources>

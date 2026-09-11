@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layoutDirection="ltr"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/backbtn"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:padding="10dp"
+            android:src="@drawable/back"
+            android:tint="@color/colorSecondary"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_bar"
+        android:clipToPadding="false"
+        android:paddingBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layoutDirection="@string/layout_direction"
+            android:orientation="vertical">
+
+            <com.ni.external.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/write_review"
+                android:textColor="@color/primaryText"
+                android:textSize="34sp"
+                app:fonts="font_bold.ttf" />
+
+            <com.ni.external.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/review_des"
+                android:textColor="@color/primaryText"
+                android:textSize="18sp"
+                app:fonts="font_regular.ttf" />
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:numStars="5"
+                android:rating="0"
+                android:scaleX=".8"
+                android:scaleY=".8"
+                android:stepSize="1"
+                android:theme="@style/RatingBar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/title"
+                    android:textColor="@color/primaryText"
+                    android:textSize="16sp"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomEditText
+                    android:id="@+id/reviewTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/editextbg"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapSentences|text"
+                    android:maxLength="60"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/primaryText"
+                    android:textSize="16sp"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/review"
+                    android:textColor="@color/primaryText"
+                    android:textSize="16sp"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomEditText
+                    android:id="@+id/review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/editextbg"
+                    android:gravity="top"
+                    android:imeOptions="actionDone"
+                    android:inputType="textCapSentences|textMultiLine|text"
+                    android:maxLength="500"
+                    android:minHeight="80dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/primaryText"
+                    android:textSize="16sp"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomTextView
+                    android:id="@+id/submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/round_corner_primary"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="@string/submit"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:fonts="font_bold.ttf" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

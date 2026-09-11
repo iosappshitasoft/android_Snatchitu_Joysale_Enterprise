@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/actionbar_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/actionbar"
+        android:layout_above="@+id/saveLay"
+        android:layout_marginTop="5dp"
+        android:divider="@color/divider"
+        android:dividerHeight="0.5dp" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progress"
+        android:layout_width="@dimen/progress_size"
+        android:layout_height="@dimen/progress_size"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/progressColor"
+        app:indicatorName="BallPulseIndicator" />
+
+    <LinearLayout
+        android:id="@+id/nullLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/no_item" />
+
+        <com.ni.external.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/sorry"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/primaryText"
+            app:fonts="font_regular.ttf" />
+
+        <com.ni.external.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="@string/noData"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/primaryText"
+            app:fonts="font_regular.ttf" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/saveLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <com.ni.external.CustomTextView
+            android:id="@+id/none"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorSecondary"
+            android:gravity="center"
+            android:padding="17dp"
+            android:singleLine="true"
+            android:text="@string/noneofabove"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_large"
+            app:fonts="font_regular.ttf" />
+
+        <com.ni.external.CustomTextView
+            android:id="@+id/sold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="17dp"
+            android:singleLine="true"
+            android:text="@string/mark_as_sold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_large"
+            app:fonts="font_regular.ttf" />
+    </LinearLayout>
+</RelativeLayout>

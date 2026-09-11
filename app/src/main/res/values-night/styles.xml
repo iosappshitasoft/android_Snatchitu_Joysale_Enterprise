@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Dark Theme Override -->
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
+        <!-- White icons for Dark Mode -->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <style name="MainActivityTheme" parent="@style/Theme.MaterialComponents.NoActionBar.Bridge">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/secondaryText</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <!-- White icons for Dark Mode -->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <style name="AppCusTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/secondaryText</item>
+        
+        <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
+        <!-- White icons for Dark Mode -->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@color/primaryText</item>
+        <item name="android:textColorPrimary">@color/primaryText</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="RatingBarPrimary" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/textPrimary</item>
+        <item name="colorControlActivated">@color/textPrimary</item>
+    </style>
+
+    <style name="TextLabel" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColorHint">@color/secondaryText</item>
+        <item name="colorControlNormal">@color/secondaryText</item>
+        <item name="colorControlActivated">@color/secondaryText</item>
+    </style>
+
+</resources>

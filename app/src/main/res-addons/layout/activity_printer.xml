@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/actionbar"
+            layout="@layout/actionbar_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+<!--            <com.otaliastudios.printer.DocumentView-->
+<!--                android:id="@+id/pdf_preview"-->
+<!--                android:padding="16dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:columnsPerPage="1"-->
+<!--                app:pageBackground="@android:color/white"-->
+<!--                app:pagerType="vertical"-->
+<!--                app:pageDividerWidth="0.3in"-->
+<!--                app:pageElevation="0.03in"-->
+<!--                app:pageInsetStart="24pt"-->
+<!--                app:pageInsetEnd="24pt"-->
+<!--                app:pageInsetTop="48pt"-->
+<!--                app:pageInsetBottom="48pt"-->
+<!--                app:printSize="ISO_A5">-->
+<!--                <include layout="@layout/content"/>-->
+<!--            </com.otaliastudios.printer.DocumentView>-->
+
+            <com.ni.external.FloatingActionButton
+                app:fabColor="@color/colorPrimary"
+                android:id="@+id/edit"
+                android:visibility="gone"
+               app:fabText="@string/edit"
+                app:fabTextColor="@color/white"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:textColor="@android:color/white"
+                android:text="Print PDF"
+                android:id="@+id/print_pdf"
+                android:textAllCaps="false"
+                android:background="@null"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Edit -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/controls"
+        android:background="@android:color/white"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="300dp"
+        app:behavior_skipCollapsed="false"
+        android:elevation="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/controls"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/actionbar_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:layout_below="@+id/actionbar"
+        android:background="@color/divider" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/save"
+        android:layout_below="@+id/view"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/mainLay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="@string/layout_direction"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nickname"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/text_normal"
+                    android:textColor="@color/secondaryText1"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomEditText
+                    android:id="@+id/addressTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/enter_your_nickname"
+                    android:textColorHint="@color/secondaryText2"
+                    android:inputType="textCapSentences|text"
+                    android:maxLines="1"
+                    android:paddingTop="10dp"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/text_medium"
+                    app:fonts="font_regular.ttf" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textColor="@color/secondaryText1"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/text_normal"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomEditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/enter_your_name"
+                    android:inputType="textCapSentences|text"
+                    android:maxLines="1"
+                    android:textColorHint="@color/secondaryText2"
+                    android:paddingTop="10dp"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/text_medium"
+                    app:fonts="font_regular.ttf" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/country"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/text_normal"
+                    android:textColor="@color/secondaryText1"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomTextView
+                    android:id="@+id/country"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="@string/select_country"
+                    android:maxLines="1"
+                    android:textColorHint="@color/secondaryText2"
+                    android:paddingTop="10dp"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/text_medium"
+                    app:fonts="font_regular.ttf" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address1"
+                    android:textColor="@color/secondaryText1"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/text_normal"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomEditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/enter_your_address1"
+                    android:inputType="textCapSentences|text"
+                    android:maxLength="60"
+                    android:textColorHint="@color/secondaryText2"
+                    android:maxLines="1"
+                    android:paddingTop="10dp"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/text_medium"
+                    app:fonts="font_regular.ttf" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address2"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/secondaryText1"
+                    android:textSize="@dimen/text_normal"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomEditText
+                    android:id="@+id/addressLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/enter_your_address2"
+                    android:inputType="textCapSentences|text"
+                    android:maxLength="60"
+                    android:textColorHint="@color/secondaryText2"
+                    android:maxLines="1"
+                    android:paddingTop="10dp"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/text_medium"
+                    app:fonts="font_regular.ttf" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/city"
+                    android:textColor="@color/secondaryText1"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/text_normal"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomEditText
+                    android:id="@+id/city"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/enter_your_city"
+                    android:inputType="textCapSentences|text"
+                    android:maxLines="1"
+                    android:textColorHint="@color/secondaryText2"
+                    android:paddingTop="10dp"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/text_medium"
+                    app:fonts="font_regular.ttf" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/state"
+                    android:textColor="@color/secondaryText1"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/text_normal"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomEditText
+                    android:id="@+id/state"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/enter_your_state"
+                    android:inputType="textCapSentences|text"
+                    android:maxLines="1"
+                    android:textColorHint="@color/secondaryText2"
+                    android:paddingTop="10dp"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/text_medium"
+                    app:fonts="font_regular.ttf" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zipcode"
+                    android:textColor="@color/secondaryText1"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/text_normal"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomEditText
+                    android:id="@+id/zipcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/enter_your_zipcode"
+                    android:textColorHint="@color/secondaryText2"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapSentences|text"
+                    android:maxLines="1"
+                    android:paddingTop="10dp"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/text_medium"
+                    app:fonts="font_regular.ttf" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.ni.external.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone"
+                    android:textColor="@color/secondaryText1"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/text_normal"
+                    app:fonts="font_regular.ttf" />
+
+                <com.ni.external.CustomEditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:digits="1234567890"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/enter_your_phone"
+                    android:textColorHint="@color/secondaryText2"
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:paddingTop="10dp"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/text_medium"
+                    app:fonts="font_regular.ttf" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progress"
+        android:layout_width="@dimen/progress_size"
+        android:layout_height="@dimen/progress_size"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/progressColor"
+        app:indicatorName="BallPulseIndicator" />
+
+    <com.ni.external.CustomTextView
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/primary"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="15dp"
+        android:text="@string/continue_add"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_large"
+        app:fonts="font_regular.ttf" />
+
+</RelativeLayout>

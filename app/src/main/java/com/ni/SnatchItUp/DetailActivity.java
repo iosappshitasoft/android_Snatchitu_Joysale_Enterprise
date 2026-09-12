@@ -357,7 +357,8 @@ public class DetailActivity extends BaseActivity implements OnClickListener, Par
 
 
     private void setData() {
-        if (itemMap.getItemCondition() != null && !itemMap.getItemCondition().equals("0")) {
+        Log.e("king", "setData: "+new Gson().toJson(itemMap) );
+        if (itemMap.getItemCondition() != null && ! "".equals(itemMap.getItemCondition())&& !itemMap.getItemCondition().equals("0")) {
             itemCond.setVisibility(View.VISIBLE);
             itemCond.setText(itemMap.getItemCondition());
         } else {

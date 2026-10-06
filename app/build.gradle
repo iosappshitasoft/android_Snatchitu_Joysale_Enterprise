@@ -3,9 +3,6 @@ apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 apply plugin: 'kotlin-android'
 
-
-
-
 android {
     signingConfigs {
         customDebug {
@@ -29,8 +26,8 @@ android {
         applicationId "com.ni.SnatchItUp"
         minSdkVersion 24
         targetSdkVersion 36
-        versionCode 9
-        versionName "1.6"
+        versionCode 13
+        versionName "1.10"
         multiDexEnabled true
         archivesBaseName = "Snatchitup"
     }
@@ -46,7 +43,6 @@ android {
     dexOptions {
         javaMaxHeapSize "4g"
     }
-
 
 
     //addons smart reply

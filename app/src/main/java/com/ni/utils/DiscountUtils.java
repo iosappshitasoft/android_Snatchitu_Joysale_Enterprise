@@ -77,7 +77,8 @@ public final class DiscountUtils {
         }
     }
 
-    public static void bindListingDiscount(Context context,
+    //old
+    /* public static void bindListingDiscount(Context context,
                                            HomeItemResponse.Item item,
                                            TextView priceView,
                                            TextView originalPriceView,
@@ -150,8 +151,104 @@ public final class DiscountUtils {
                 discountBadgeView.setVisibility(View.GONE);
             }
         }
+    }*/
+
+    //new
+    public static void bindListingDiscount(Context context,
+                                           HomeItemResponse.Item item,
+                                           TextView priceView,
+                                           TextView originalPriceView,
+                                           TextView discountBadgeView) {
+        if (item == null) {
+            return;
+        }
+
+        String discountPercentValue = resolveDiscountPercent(item);
+        boolean hasDiscount = discountPercentValue != null
+                && item.getPrice() != null
+                && !item.getPrice().equals("0");
+
+        if (item.getPrice() != null && item.getPrice().equals("0")) {
+            if (priceView != null) {
+                priceView.setText(context.getString(R.string.giving_away));
+                priceView.setTextColor(context.getResources().getColor(R.color.primary));
+            }
+            if (originalPriceView != null) {
+                originalPriceView.setVisibility(View.GONE);
+            }
+            if (discountBadgeView != null) {
+                discountBadgeView.setVisibility(View.GONE);
+            }
+            return;
+        }
+
+        if (hasDiscount) {
+            try {
+                double original = Double.parseDouble(item.getPrice());
+                double percent = Double.parseDouble(discountPercentValue);
+                double discounted = original - (original * percent / 100d);
+                if (priceView != null) {
+                    priceView.setText(formatDiscountPrice(item, discounted));
+                    priceView.setTextColor(context.getResources().getColor(R.color.primaryText));
+                }
+                if (originalPriceView != null) {
+                    originalPriceView.setVisibility(View.VISIBLE);
+                    originalPriceView.setText(item.getFormattedPrice());
+                    originalPriceView.setPaintFlags(originalPriceView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                }
+                if (discountBadgeView != null) {
+                    discountBadgeView.setVisibility(View.VISIBLE);
+                    discountBadgeView.setText(context.getString(
+                            R.string.discount_off_format,
+                            cleanPercent(discountPercentValue)));
+                    applyCornerRibbon(context, discountBadgeView, 28, 14);
+                }
+            } catch (NumberFormatException e) {
+                if (priceView != null) {
+                    priceView.setText(item.getFormattedPrice());
+                    priceView.setTextColor(context.getResources().getColor(R.color.primaryText));
+                }
+                if (originalPriceView != null) {
+                    originalPriceView.setVisibility(View.GONE);
+                }
+                if (discountBadgeView != null) {
+                    discountBadgeView.setVisibility(View.GONE);
+                }
+            }
+        } else {
+            if (priceView != null) {
+                priceView.setText(item.getFormattedPrice());
+                priceView.setTextColor(context.getResources().getColor(R.color.primaryText));
+            }
+            if (originalPriceView != null) {
+                originalPriceView.setVisibility(View.GONE);
+            }
+            if (discountBadgeView != null) {
+                discountBadgeView.setVisibility(View.GONE);
+            }
+        }
     }
 
+    //old
+  /*  public static void bindAffiliateLabel(Context context,
+                                          HomeItemResponse.Item item,
+                                          TextView affiliateLabel,
+                                          View priceLay) {
+        if (affiliateLabel == null) {
+            return;
+        }
+        if (item != null && !"".equals(item.getPromoCode()) && !"".equals(item.getDiscountPercentage())) {
+            affiliateLabel.setVisibility(View.VISIBLE);
+            affiliateLabel.setText(context.getString(R.string.discounted));
+            affiliateLabel.setTextColor(context.getResources().getColor(R.color.primary));
+            applyPriceTopMargin(context, priceLay, 2);
+        } else {
+            affiliateLabel.setVisibility(View.GONE);
+            applyPriceTopMargin(context, priceLay, 5);
+        }
+    }*/
+
+    //new
     public static void bindAffiliateLabel(Context context,
                                           HomeItemResponse.Item item,
                                           TextView affiliateLabel,
@@ -159,11 +256,16 @@ public final class DiscountUtils {
         if (affiliateLabel == null) {
             return;
         }
-        if (item != null
-                && !"".equals(item.getPromoCode())
-                && !"".equals(item.getDiscountPercentage())) {
+
+        String affiliateDiscount = item != null ? item.getDiscountPercent() : null;
+        boolean showDiscountLabel = affiliateDiscount != null
+                && !affiliateDiscount.isEmpty()
+                && !affiliateDiscount.equals("0");
+
+        if (showDiscountLabel) {
+            String percent = cleanPercent(affiliateDiscount);
             affiliateLabel.setVisibility(View.VISIBLE);
-            affiliateLabel.setText(context.getString(R.string.discounted));
+            affiliateLabel.setText(context.getString(R.string.discounted_percent_format, percent));
             affiliateLabel.setTextColor(context.getResources().getColor(R.color.primary));
             applyPriceTopMargin(context, priceLay, 2);
         } else {
@@ -259,5 +361,20 @@ public final class DiscountUtils {
             symbol = item.getCurrencySymbol();
         }
         return symbol + " " + discountedNumber;
+    }
+
+    private static String resolveDiscountPercent(HomeItemResponse.Item item) {
+        if (item == null) {
+            return null;
+        }
+        String discountPercent = item.getDiscountPercent(); // affiliate field: discount_percent
+        if (discountPercent != null && !discountPercent.isEmpty() && !discountPercent.equals("0")) {
+            return discountPercent;
+        }
+        String discountPercentage = item.getDiscountPercentage(); // normal field: discount_percentage
+        if (discountPercentage != null && !discountPercentage.isEmpty() && !discountPercentage.equals("0")) {
+            return discountPercentage;
+        }
+        return null;
     }
 }

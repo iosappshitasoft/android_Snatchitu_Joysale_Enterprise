@@ -11,8 +11,9 @@ import java.util.List;
 
 /**
  * Resolves listing photo URLs for both regular ads and affiliate products.
- * Affiliate items often send a filename in {@code item_image} (or a plain URL string)
- * instead of {@code item_url_main_original}.
+ * Prefer {@code item_url_main_original}  — site 350 thumbs are
+ * often missing for some products while the S3 original still loads.
+ * Affiliate items may send a filename in {@code item_image} (or a plain URL string).
  */
 public final class PhotoUtils {
 
@@ -50,10 +51,10 @@ public final class PhotoUtils {
         if (photo == null) {
             return null;
         }
-        // Prefer the site 350 URL. S3 "original" links are often 403.
+        // Prefer original (web/iOS). Fall back to 350 when original is missing.
         return toAbsoluteUrl(firstNonEmpty(
-                photo.getItemUrlMain350(),
                 photo.getItemUrlMainOriginal(),
+                photo.getItemUrlMain350(),
                 photo.getItemImage(),
                 photo.getImage(),
                 photo.getPath()));
@@ -79,9 +80,12 @@ public final class PhotoUtils {
             target.setImageResource(placeholderRes);
             return;
         }
-        // Do not use resize + centerCrop + onlyScaleDown: 350px thumbs are smaller
-        // than the grid cell, and Picasso treats that as a failed load (error placeholder).
+        // Resize large S3 originals for the grid. onlyScaleDown keeps 350px fallbacks
+        // from failing when the cell is larger than the bitmap.
         RequestCreator request = picasso.load(resolved)
+                .resize(sizePx, sizePx)
+                .onlyScaleDown()
+                .centerCrop()
                 .placeholder(placeholderRes)
                 .error(placeholderRes);
         if (requestTag != null) {

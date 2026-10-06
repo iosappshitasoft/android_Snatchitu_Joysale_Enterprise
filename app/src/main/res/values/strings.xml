@@ -975,6 +975,6 @@
     <string name="select_theme">Select Theme</string>
     <string name="dark">Dark</string>
     <string name="light">Light</string>
-
+    <string name="discounted_percent_format">Discounted (%1$s%% OFF)</string>
 
 </resources>

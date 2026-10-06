@@ -2295,6 +2295,8 @@ public class FragmentMainActivity extends BaseActivity
             @Override
             public void onResponse(Call<HomeItemResponse> call, retrofit2.Response<HomeItemResponse> response) {
                 if (response.isSuccessful()) {
+                    Log.d("HOME_API", "Response_Body: " + new Gson().toJson(response.body()));
+
                     if (response.body().getStatus().equals(Constants.TAG_TRUE)) {
                         idList = new ArrayList<>();
                         // if(priceMin !=0 && priceMax !=0)

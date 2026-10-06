@@ -67,11 +67,27 @@
           }
         },
         {
+          "client_id": "617783976080-lok2q5utjebto8ijemobg4ak283m5gpa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ni.SnatchItUp",
+            "certificate_hash": "39c1de0e0a410769eb8d05d16ea4ce7e42433d3a"
+          }
+        },
+        {
           "client_id": "617783976080-pt35p0jeibmo0b0n225upm0b4j718rf2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.ni.SnatchItUp",
             "certificate_hash": "046c50142a4004e29ed614eaf66e5c2ec83dc2d5"
+          }
+        },
+        {
+          "client_id": "617783976080-t62jqtt71qvkij414mmje0dl0soalqrf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ni.SnatchItUp",
+            "certificate_hash": "776f11453d4dc0cf048c2c6f5e60f87b23cfaf26"
           }
         },
         {

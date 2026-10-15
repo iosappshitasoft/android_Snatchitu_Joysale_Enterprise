@@ -53,6 +53,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -171,7 +172,7 @@ public class DetailActivity extends BaseActivity implements OnClickListener, Par
     ApiInterface apiInterface;
     private boolean isTitleVisibility = false;
     private NumberFormat numberFormat;
-    AdView adView;
+    FrameLayout descriptionAdContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -226,9 +227,9 @@ public class DetailActivity extends BaseActivity implements OnClickListener, Par
         progress = (AVLoadingIndicatorView) findViewById(R.id.progress);
         titleText = (TextView) findViewById(R.id.title_text);
         call = (TextView) findViewById(R.id.call);
-        adView = findViewById(R.id.descriptionAdView);
-        if (adView == null) {
-            adView = findViewById(R.id.adView);
+        descriptionAdContainer = findViewById(R.id.descriptionAdContainer);
+        if (descriptionAdContainer == null) {
+            descriptionAdContainer = findViewById(R.id.homeListAdContainer);
         }
 
         //Addon BuyNow
@@ -258,9 +259,9 @@ public class DetailActivity extends BaseActivity implements OnClickListener, Par
             mailVerify.setVisibility(View.VISIBLE);
         }
 
-        //Addon Banner Ad - load near description
-        if (adView != null) {
-            BannerAdUtils.loadBannerAd(this, adView);
+        //Addon Banner Ad - load list banner ad below description layout
+        if (descriptionAdContainer != null) {
+            BannerAdUtils.loadListBannerAd(this, descriptionAdContainer);
         }
 
         backBtn.setOnClickListener(this);
@@ -3312,5 +3313,13 @@ public class DetailActivity extends BaseActivity implements OnClickListener, Par
         btn2.setTypeface(typeface);
         dialog.setCancelable(false);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (descriptionAdContainer != null) {
+            BannerAdUtils.destroyListAd(descriptionAdContainer);
+        }
+        super.onDestroy();
     }
 }

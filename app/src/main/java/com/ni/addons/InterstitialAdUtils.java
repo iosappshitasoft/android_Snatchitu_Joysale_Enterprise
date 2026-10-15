@@ -33,7 +33,7 @@ public class InterstitialAdUtils {
             });
             AdRequest adRequest = new AdRequest.Builder().build();
 
-            InterstitialAd.load(activity.getApplicationContext(), "ca-app-pub-9552829837499366/6507115513", adRequest,
+            InterstitialAd.load(activity.getApplicationContext(), Constants.INTERSTITIAL_AD_ID, adRequest,
                     new InterstitialAdLoadCallback() {
                         @Override
                         public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {

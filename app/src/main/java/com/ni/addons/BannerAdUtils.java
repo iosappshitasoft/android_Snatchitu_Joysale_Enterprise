@@ -28,6 +28,8 @@ import com.ni.utils.Constants;
 
 public class BannerAdUtils {
     static AdView adView = null;
+    /** Live banner unit. Google sample test banner only for local DEBUG builds. */
+    public static final String LIVE_BANNER_ID = "ca-app-pub-9552829837499366/4470536152";
     public static final String GOOGLE_TEST_BANNER_ID = "ca-app-pub-3940256099942544/6300978111";
     private static final String TAG = "BannerAdUtils";
 
@@ -86,7 +88,7 @@ public class BannerAdUtils {
                 }
             });
             adView = new AdView(activity);
-            adView.setAdUnitId(Constants.ADMOB_BANNER_ID);
+            adView.setAdUnitId(getBannerAdUnitId());
             adLay.removeAllViews();
             adLay.addView(adView);
             adView.setAdSize(getAdSize(activity));
@@ -202,7 +204,7 @@ public class BannerAdUtils {
         if (isValidAdUnitId(id)) {
             return id.trim();
         }
-        return GOOGLE_TEST_BANNER_ID;
+        return LIVE_BANNER_ID;
     }
 
     public static boolean isValidAdUnitId(String id) {
@@ -210,6 +212,7 @@ public class BannerAdUtils {
     }
 
     public static void applyAdminBannerId(String bannerId) {
+        // Keep live banner unless admin sends a real ad unit (…/…), not an app id (…~…).
         if (isValidAdUnitId(bannerId)) {
             Constants.ADMOB_BANNER_ID = bannerId.trim();
         }
@@ -252,11 +255,13 @@ public class BannerAdUtils {
                 Log.e(TAG, "list ad failed: " + loadAdError.getCode()
                         + " " + loadAdError.getMessage());
                 adView.setTag(null);
+                adContainer.setVisibility(View.GONE);
             }
 
             @Override
             public void onAdLoaded() {
                 adView.setTag(Boolean.TRUE);
+                adContainer.setVisibility(View.VISIBLE);
                 adView.setVisibility(View.VISIBLE);
                 Log.d(TAG, "list ad loaded");
             }

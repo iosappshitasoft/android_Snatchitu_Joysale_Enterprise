@@ -458,6 +458,7 @@
                     android:background="@color/bg" />
 
                 <LinearLayout
+                    android:id="@+id/descriptionLay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -545,14 +546,22 @@
 
                 </LinearLayout>
 
-                <include
-                    android:id="@+id/descriptionAdView"
-                    layout="@layout/layout_adview" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
                     android:background="@color/bg" />
+
+                <FrameLayout
+                    android:id="@+id/descriptionAdContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/white"
+                    android:minHeight="250dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -926,6 +935,8 @@
                     </RelativeLayout>
 
                 </RelativeLayout>
+
+
 
                 <LinearLayout
                     android:id="@+id/moreitemsLay"

@@ -25,6 +25,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.ni.addons.BannerAdUtils;
+import com.ni.addons.InterstitialAdUtils;
 import com.ni.helper.ImageStorage;
 import com.ni.helper.LocaleManager;
 import com.ni.helper.NetworkReceiver;
@@ -130,8 +131,9 @@ public class SplashActivity extends BaseActivity {
                                     if (result.getGoogleAdsType() != null)
                                         Constants.TAG_GOOGLEADS_STATUS = result.getGoogleAdsType().trim();
 
-                                    if (Constants.ADDON_INTERSTITIAL_AD && result.getInterstitial_ad_key() != null)
-                                        Constants.INTERSTITIAL_AD_ID = result.getInterstitial_ad_key();
+                                    if (Constants.ADDON_INTERSTITIAL_AD) {
+                                        InterstitialAdUtils.applyAdminInterstitialId(result.getInterstitial_ad_key());
+                                    }
 
                                     if (Constants.ADDON_CALL_ENABLED && result.getApprtcUrl() != null)
                                         Constants.APPRTC_URL = result.getApprtcUrl();

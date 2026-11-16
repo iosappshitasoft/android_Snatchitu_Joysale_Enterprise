@@ -968,6 +968,8 @@
 
     <string name="txt_search_items">Search Items</string>
     <string name="banner_ad_id" translatable="false">ca-app-pub-9552829837499366/4470536152</string>
+    <string name="square_ad_id" translatable="false">ca-app-pub-9552829837499366/5588463397</string>
+    <string name="interstitial_ad_id" translatable="false">ca-app-pub-9552829837499366/6507115513</string>
     <string name="top_brands">Top Brands</string>
     <string name="featured_products">Featured Products</string>
     <string name="gaming">Gaming</string>

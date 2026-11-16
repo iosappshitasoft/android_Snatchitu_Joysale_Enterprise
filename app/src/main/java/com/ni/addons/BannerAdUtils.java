@@ -28,8 +28,9 @@ import com.ni.utils.Constants;
 
 public class BannerAdUtils {
     static AdView adView = null;
-    /** Live banner unit. Google sample test banner only for local DEBUG builds. */
+    /** Live units. Google sample IDs are used only for local DEBUG builds. */
     public static final String LIVE_BANNER_ID = "ca-app-pub-9552829837499366/4470536152";
+    public static final String LIVE_SQUARE_ID = "ca-app-pub-9552829837499366/5588463397";
     public static final String GOOGLE_TEST_BANNER_ID = "ca-app-pub-3940256099942544/6300978111";
     private static final String TAG = "BannerAdUtils";
 
@@ -207,6 +208,17 @@ public class BannerAdUtils {
         return LIVE_BANNER_ID;
     }
 
+    public static String getSquareAdUnitId() {
+        if (BuildConfig.DEBUG) {
+            return GOOGLE_TEST_BANNER_ID;
+        }
+        String id = Constants.ADMOB_SQUARE_ID;
+        if (isValidAdUnitId(id)) {
+            return id.trim();
+        }
+        return LIVE_SQUARE_ID;
+    }
+
     public static boolean isValidAdUnitId(String id) {
         return !TextUtils.isEmpty(id) && id.contains("ca-app-pub-") && id.contains("/");
     }
@@ -291,7 +303,7 @@ public class BannerAdUtils {
         destroyListAd(adContainer);
         AdView adView = new AdView(activity);
         adView.setAdSize(AdSize.MEDIUM_RECTANGLE);
-        adView.setAdUnitId(getBannerAdUnitId());
+        adView.setAdUnitId(getSquareAdUnitId());
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT,

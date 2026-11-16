@@ -15,12 +15,15 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.ni.SnatchItUp.BuildConfig;
 import com.ni.utils.Constants;
 
 
 public class InterstitialAdUtils {
 
     private static final String TAG = InterstitialAdUtils.class.getSimpleName();
+    public static final String LIVE_INTERSTITIAL_ID = "ca-app-pub-9552829837499366/6507115513";
+    public static final String GOOGLE_TEST_INTERSTITIAL_ID = "ca-app-pub-3940256099942544/1033173712";
     public static InterstitialAd mInterstitialAd;
 
 
@@ -33,7 +36,7 @@ public class InterstitialAdUtils {
             });
             AdRequest adRequest = new AdRequest.Builder().build();
 
-            InterstitialAd.load(activity.getApplicationContext(), Constants.INTERSTITIAL_AD_ID, adRequest,
+            InterstitialAd.load(activity.getApplicationContext(), getInterstitialAdUnitId(), adRequest,
                     new InterstitialAdLoadCallback() {
                         @Override
                         public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
@@ -83,6 +86,23 @@ public class InterstitialAdUtils {
                             mInterstitialAd = null;
                         }
                     });
+        }
+    }
+
+    public static String getInterstitialAdUnitId() {
+        if (BuildConfig.DEBUG) {
+            return GOOGLE_TEST_INTERSTITIAL_ID;
+        }
+        String id = Constants.INTERSTITIAL_AD_ID;
+        if (BannerAdUtils.isValidAdUnitId(id)) {
+            return id.trim();
+        }
+        return LIVE_INTERSTITIAL_ID;
+    }
+
+    public static void applyAdminInterstitialId(String interstitialId) {
+        if (BannerAdUtils.isValidAdUnitId(interstitialId)) {
+            Constants.INTERSTITIAL_AD_ID = interstitialId.trim();
         }
     }
 

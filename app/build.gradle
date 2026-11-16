@@ -26,8 +26,8 @@ android {
         applicationId "com.ni.SnatchItUp"
         minSdkVersion 24
         targetSdkVersion 36
-        versionCode 15
-        versionName "1.12"
+        versionCode 18
+        versionName "1.15"
         multiDexEnabled true
         archivesBaseName = "Snatchitup"
     }

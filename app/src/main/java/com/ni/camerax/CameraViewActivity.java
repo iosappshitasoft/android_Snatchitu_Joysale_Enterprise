@@ -177,7 +177,7 @@ public class CameraViewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cameraview);
         //Addon Interstitial Ad
-        InterstitialAdUtils.loadInterstitialAd(CameraViewActivity.this, new Bundle());
+       // InterstitialAdUtils.loadInterstitialAd(CameraViewActivity.this, new Bundle());
         numberFormat = NumberFormat.getInstance(new Locale("en", "US"));
         Window w = getWindow(); // in Activity's onCreate() for instance
         pref = getSharedPreferences("SavedPref", MODE_PRIVATE);

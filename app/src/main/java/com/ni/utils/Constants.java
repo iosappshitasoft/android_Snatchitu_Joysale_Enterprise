@@ -89,8 +89,9 @@ public class Constants {
     public static int HOME_BANNER_WIDTH = 1024, HOME_BANNER_HEIGHT = 500;
     public static int IMAGE_COUNT = 5;
 
-    public static String ADMOB_BANNER_ID = "ca-app-pub-9552829837499366/4470536152"; // live banner
-    public static String INTERSTITIAL_AD_ID = "ca-app-pub-9552829837499366/6507115513"; // live interstitial
+    public static String ADMOB_BANNER_ID = "ca-app-pub-9552829837499366/4470536152"; // snatchitup_banner
+    public static String INTERSTITIAL_AD_ID = "ca-app-pub-9552829837499366/6507115513"; // interstitial
+    public static String ADMOB_SQUARE_ID = "ca-app-pub-9552829837499366/5588463397"; // square / MREC
     public static String TAG_GOOGLEADS_STATUS = "google_ads";
     public static String TAG_APPRTC = "apprtc_url";
 

@@ -33,6 +33,7 @@ import androidx.work.WorkManager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ni.addons.BannerAdUtils;
+import com.ni.addons.InterstitialAdUtils;
 import com.ni.addons.LanguageData;
 import com.ni.addons.chattranslate.GetLanguageWorker;
 import com.ni.helper.LocaleManager;
@@ -283,9 +284,7 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
                                 Constants.APPRTC_URL = result.getApprtcUrl();
                             }
 
-                            if (result.getInterstitial_ad_key() != null) {
-                                Constants.INTERSTITIAL_AD_ID = result.getInterstitial_ad_key();
-                            }
+                            InterstitialAdUtils.applyAdminInterstitialId(result.getInterstitial_ad_key());
 
                             BannerAdUtils.applyAdminBannerId(result.getGoogle_ads_android());
 

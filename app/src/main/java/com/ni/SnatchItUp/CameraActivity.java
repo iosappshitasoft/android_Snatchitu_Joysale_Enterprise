@@ -623,7 +623,7 @@ public class CameraActivity extends BaseActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camera_layout);
         //Addon Interstitial Ad
-        InterstitialAdUtils.loadInterstitialAd(CameraActivity.this, new Bundle());
+        //InterstitialAdUtils.loadInterstitialAd(CameraActivity.this, new Bundle());
 
         SimpleOrientationEventListener listener = new SimpleOrientationEventListener(this) {
             @Override

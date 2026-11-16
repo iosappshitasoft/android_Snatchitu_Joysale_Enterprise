@@ -104,6 +104,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.gson.Gson;
 import com.ni.addons.BannerAdUtils;
+import com.ni.addons.InterstitialAdUtils;
 import com.ni.addons.DialogOverLayPermission;
 
 import com.ni.addons.buynow.MySalesnOrder;
@@ -2909,8 +2910,9 @@ public class FragmentMainActivity extends BaseActivity
                             if (result.getGoogleAdsType() != null)
                                 Constants.TAG_GOOGLEADS_STATUS = result.getGoogleAdsType().trim();
 
-                            if (Constants.ADDON_INTERSTITIAL_AD && result.getInterstitial_ad_key() != null)
-                                Constants.INTERSTITIAL_AD_ID = result.getInterstitial_ad_key();
+                            if (Constants.ADDON_INTERSTITIAL_AD) {
+                                InterstitialAdUtils.applyAdminInterstitialId(result.getInterstitial_ad_key());
+                            }
 
                             if (Constants.ADDON_CALL_ENABLED && result.getApprtcUrl() != null)
                                 Constants.APPRTC_URL = result.getApprtcUrl();

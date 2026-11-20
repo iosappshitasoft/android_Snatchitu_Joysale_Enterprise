@@ -316,6 +316,9 @@ public class HomeProductResponse {
                 @SerializedName("exchange_buy")
                 @Expose
                 private String exchangeBuy;
+                @SerializedName("product_delivery_type")
+                @Expose
+                private String productDeliveryType;
                 @SerializedName("make_offer")
                 @Expose
                 private String makeOffer;
@@ -732,6 +735,14 @@ public class HomeProductResponse {
 
                 public void setExchangeBuy(String exchangeBuy) {
                     this.exchangeBuy = exchangeBuy;
+                }
+
+                public String getProductDeliveryType() {
+                    return productDeliveryType;
+                }
+
+                public void setProductDeliveryType(String productDeliveryType) {
+                    this.productDeliveryType = productDeliveryType;
                 }
 
                 public String getMakeOffer() {

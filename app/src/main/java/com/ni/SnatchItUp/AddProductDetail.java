@@ -177,6 +177,7 @@ public class AddProductDetail extends BaseActivity implements View.OnClickListen
     private static final float maxHeight = 1280.0f;
     private static final float maxWidth = 1280.0f;
 
+    Spinner deliveryTypeSpinner;
     // Addon MapBox
     /*
      * private ReverseGeocodingSearchEngine reverseGeocoding;
@@ -336,6 +337,45 @@ public class AddProductDetail extends BaseActivity implements View.OnClickListen
         filterRecycler = findViewById(R.id.filterRecycler);
         edtYoutube = findViewById(R.id.edtYoutube);
         productDes = findViewById(R.id.productDes);
+        deliveryTypeSpinner = findViewById(R.id.deliveryTypeSpinner);
+
+        String[] deliveryOptions = {
+                getString(R.string.localmeetup),
+                getString(R.string.buynoworshipping)
+        };
+
+        ArrayAdapter<String> deliveryAdapter = new ArrayAdapter<>(
+                this,
+                R.layout.spinner_item,
+                deliveryOptions
+        );
+
+        deliveryAdapter.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+        );
+
+        deliveryTypeSpinner.setAdapter(deliveryAdapter);
+
+        deliveryTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    // Local Meetup: Buy Now is off
+                    buySwitch.setChecked(false);
+                    buynowLay.setVisibility(View.GONE);
+                } else if (position == 1) {
+                    // Buy Now / Shipping: Buy Now is on
+                    buySwitch.setChecked(true);
+                    buynowLay.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+
 
         productDes.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -520,7 +560,7 @@ public class AddProductDetail extends BaseActivity implements View.OnClickListen
                         priceLay.setVisibility(View.GONE);
 
                     offerLay.setVisibility(View.GONE);
-                    instantLay.setVisibility(View.GONE);
+                    instantLay.setVisibility(View.VISIBLE);
                     if (buySwitch.isChecked()) {
                         buySwitch.setChecked(false);
                         buyLay.setVisibility(View.GONE);
@@ -727,6 +767,33 @@ public class AddProductDetail extends BaseActivity implements View.OnClickListen
         exchangeSwitch.setChecked(itemMap.getExchangeBuy().equals("1"));
         chatSwitch.setChecked(itemMap.getMakeOffer().equals("1"));
         buySwitch.setChecked(itemMap.getInstantBuy().equals("1"));
+        if (deliveryTypeSpinner != null) {
+            String deliveryType = itemMap.getProductDeliveryType();
+            if (deliveryType != null && !deliveryType.trim().isEmpty()) {
+                if (Constants.DELIVERY_TYPE_BUY_NOW_SHIPPING.equalsIgnoreCase(deliveryType.trim())) {
+                    deliveryTypeSpinner.setSelection(1);
+                    buySwitch.setChecked(true);
+                    buynowLay.setVisibility(View.VISIBLE);
+                } else {
+                    deliveryTypeSpinner.setSelection(0);
+                    buySwitch.setChecked(false);
+                    buynowLay.setVisibility(View.GONE);
+                }
+            } else {
+                // Backward compatibility:
+                // instant_buy = "1" -> Buy Now / Shipping
+                // instant_buy = "0" -> Local Meetup
+                if ("1".equals(itemMap.getInstantBuy())) {
+                    deliveryTypeSpinner.setSelection(1);
+                    buySwitch.setChecked(true);
+                    buynowLay.setVisibility(View.VISIBLE);
+                } else {
+                    deliveryTypeSpinner.setSelection(0);
+                    buySwitch.setChecked(false);
+                    buynowLay.setVisibility(View.GONE);
+                }
+            }
+        }
         conditionId = itemMap.getItemConditionId() != null ? itemMap.getItemConditionId() : "";
         conditionName = itemMap.getItemCondition() != null ? itemMap.getItemCondition() : "";
 
@@ -891,7 +958,10 @@ public class AddProductDetail extends BaseActivity implements View.OnClickListen
      **/
     private void setCategoryConditions() {
         bottomLay.setVisibility(View.GONE);
-        instantLay.setVisibility(View.GONE);
+        // Delivery type stays visible whether or not a category is selected.
+        instantLay.setVisibility(View.VISIBLE);
+        buyLay.setVisibility(View.VISIBLE);
+        buynowLay.setVisibility(buySwitch.isChecked() ? View.VISIBLE : View.GONE);
         if (categoryList.size() > 0) {
             for (BeforeAddResponse.Category category : categoryList) {
                 if (category.getCategoryId().equals(categoryId)) {
@@ -918,16 +988,6 @@ public class AddProductDetail extends BaseActivity implements View.OnClickListen
                         }
                     }
 
-                    if (category.getInstantBuy().equals("disable")) {
-                        instantLay.setVisibility(View.GONE);
-                    } else {
-                        if (Constants.BUYNOW) {
-                            instantLay.setVisibility(View.VISIBLE);
-                            buynowLay.setVisibility(buySwitch.isChecked() ? View.VISIBLE : View.GONE);
-                        } else {
-                            instantLay.setVisibility(View.GONE);
-                        }
-                    }
                     break;
                 }
             }
@@ -1264,6 +1324,11 @@ public class AddProductDetail extends BaseActivity implements View.OnClickListen
                     map.put(Constants.TAG_INSTANT_BUY, "2");
                 }
             }
+
+            String selectedDeliveryType = (deliveryTypeSpinner != null && deliveryTypeSpinner.getSelectedItemPosition() == 1)
+                    ? Constants.DELIVERY_TYPE_BUY_NOW_SHIPPING
+                    : Constants.DELIVERY_TYPE_LOCAL_MEETUP;
+            map.put(Constants.TAG_PRODUCT_DELIVERY_TYPE, selectedDeliveryType);
 
             if (conditionLay.getVisibility() == View.VISIBLE) {
                 map.put(Constants.TAG_ITEM_CONDITION, conditionId);

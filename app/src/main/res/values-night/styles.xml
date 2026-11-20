@@ -7,6 +7,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
 
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
@@ -20,6 +21,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:textColorSecondary">@color/secondaryText</item>
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
         <item name="android:windowActionBarOverlay">true</item>
         <!-- White icons for Dark Mode -->
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
@@ -31,7 +33,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:textColorSecondary">@color/secondaryText</item>
-        
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
+
         <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
         <!-- White icons for Dark Mode -->
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>

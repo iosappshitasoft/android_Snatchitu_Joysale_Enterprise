@@ -22,4 +22,26 @@
     <color name="promo_code_hint">#888888</color>
     <color name="textPrimary">#FFFFFF</color>
     <color name="phone_login_bg">#000000</color>
+
+    <!-- Calendar: do not follow the inverted @color/white alias -->
+    <color name="calendar_bg">#000000</color>
+    <color name="calendar_active_month_bg">#000000</color>
+    <color name="calendar_inactive_month_bg">#2B2B2B</color>
+    <color name="calendar_divider">#2B2B2B</color>
+    <color name="calendar_selected_day_bg">#38F214</color>
+    <color name="calendar_today_bg">#38F214</color>
+    <color name="calendar_highlighted_day_bg">#1A1A1A</color>
+    <color name="calendar_selected_range_bg">#1B5E20</color>
+    <color name="calendar_text_active">#FFFFFF</color>
+    <color name="calendar_text_selected">#000000</color>
+    <color name="calendar_text_inactive">#888888</color>
+    <color name="calendar_text_unselectable">#666666</color>
+    <color name="calendar_text_highlighted">#38F214</color>
+    <color name="dateTimeRangePickerStateDefault">#FFFFFF</color>
+    <color name="dateTimeRangePickerStateNonSelectable">#888888</color>
+    <color name="dateTimeRangePickerStateToday">#000000</color>
+    <color name="dateTimeRangePickerHeaderTextColor">#B0B0B0</color>
+    <color name="dateTimeRangePickerTitleTextColor">#FFFFFF</color>
+    <color name="dateTimeRangePickerRangeTextColorActive">#FFFFFF</color>
+    <color name="dateTimeRangePickerRangeTextColorInactive">#888888</color>
 </resources>

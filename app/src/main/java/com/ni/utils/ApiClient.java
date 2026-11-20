@@ -57,7 +57,9 @@ public class ApiClient {
                     Log.i(TAG, safeLog(message));
                 }
             });
-            logging.level(HttpLoggingInterceptor.Level.BODY);
+
+           logging.level(HttpLoggingInterceptor.Level.BODY);
+            //for dev server logging.level(HttpLoggingInterceptor.Level.BASIC);
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .addInterceptor(logging)
@@ -82,7 +84,7 @@ public class ApiClient {
                         @NonNull
                         @Override
                         public Response intercept(@NonNull Chain chain) throws IOException {
-                            Log.e(TAG, "intercept: " + Constants.pref.getString(Constants.TAG_ACCESS_TOKENS, Constants.TAG_ACCESS_TOKENS_PREF));
+                        Log.e(TAG, "intercept: " + Constants.pref.getString(Constants.TAG_ACCESS_TOKENS, Constants.TAG_ACCESS_TOKENS_PREF));
                             Request original = chain.request();
                             Request.Builder requestBuilder = original.newBuilder()
                                     .addHeader(Constants.TAG_AUTHORIZATION,

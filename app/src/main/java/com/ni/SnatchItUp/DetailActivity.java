@@ -455,7 +455,16 @@ public class DetailActivity extends BaseActivity implements OnClickListener, Par
         setFilterData();
 
         viewCount.setText((itemMap.getViewsCount() != null ? JoysaleApplication.format(Double.parseDouble(itemMap.getViewsCount())) : "0") + " " + getResources().getString(R.string.views));
-        moreItems.setText(getResources().getString(R.string.more_items_from) + " " + itemMap.getSellerName());
+     //   moreItems.setText(getResources().getString(R.string.more_items_from) + " " + itemMap.getSellerName());
+        String sellerName = itemMap.getSellerName();
+
+        if ("demo".equalsIgnoreCase(sellerName)) {
+            sellerName = getString(R.string.affiliate_profile_name);
+        }
+
+        moreItems.setText(
+                getString(R.string.more_items_from) + " " + sellerName
+        );
         location.setText(itemMap.getLocation());
         shopaddress = itemMap.getLocation();
 
@@ -795,27 +804,29 @@ public class DetailActivity extends BaseActivity implements OnClickListener, Par
         } else {
             edit.setVisibility(View.GONE);
             likeImg.setVisibility(View.VISIBLE);
-            chat.setVisibility(View.VISIBLE);
             isSeller = false;
-            setBuyerChatCta(chat, getString(R.string.snatch_it_up));
-            if (Constants.BUYNOW) {
-                offer.setText(getString(R.string.instantbuy));
-                if (itemMap.getInstantBuy().equals("0") || itemMap.getInstantBuy().equals("2")
-                        || itemMap.getItemStatus().equalsIgnoreCase("sold")) {
+            chat.setBackgroundColor(getResources().getColor(R.color.colorSecondary));
+            chat.setTextColor(getResources().getColor(R.color.gph_white));
+            offer.setBackgroundColor(getResources().getColor(R.color.primary));
+            offer.setTextColor(getResources().getColor(R.color.white));
+
+            if (isBuyNowShippingProduct()) {
+                // Condition 2: Buy Now / Shipping
+                // Display only one button: Cart icon + SNATCH IT UP (replaces BUY NOW visually)
+                chat.setVisibility(View.GONE);
+                if (itemMap.getItemStatus().equalsIgnoreCase("sold")
+                        || "0".equals(itemMap.getPrice())) {
                     offer.setVisibility(View.GONE);
                 } else {
                     offer.setVisibility(View.VISIBLE);
-                }
-                if (itemMap.getPrice().equals("0")) {
-                    offer.setVisibility(View.GONE);
+                    setBuyerCartCta(offer, getString(R.string.snatch_it_up));
                 }
             } else {
-                offer.setText(getString(R.string.make_an_offer));
-                if (itemMap.getMakeOffer().equals("0")) {
-                    offer.setVisibility(View.VISIBLE);
-                } else {
-                    offer.setVisibility(View.GONE);
-                }
+                // Condition 1: Local Meetup
+                // Display only one button: Message icon + 1 IT UP
+                offer.setVisibility(View.GONE);
+                chat.setVisibility(View.VISIBLE);
+                setBuyerChatCta(chat, getString(R.string.snatch_it_up));
             }
         }
     }
@@ -961,11 +972,50 @@ public class DetailActivity extends BaseActivity implements OnClickListener, Par
         textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     }
 
+    private boolean isBuyNowShippingProduct() {
+        if (itemMap == null) {
+            return false;
+        }
+        String deliveryType = itemMap.getProductDeliveryType();
+        if (deliveryType != null && !deliveryType.trim().isEmpty()) {
+            return Constants.DELIVERY_TYPE_BUY_NOW_SHIPPING.equalsIgnoreCase(deliveryType.trim());
+        }
+        // Safe fallback if product_delivery_type is missing/null:
+        return "1".equals(itemMap.getInstantBuy());
+    }
+
+    private void setBuyerCartCta(TextView textView, String text) {
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, 18);
+        String label = text != null ? text.trim() : "";
+        if (label.equalsIgnoreCase(getString(R.string.snatch_it_up))) {
+            android.text.SpannableStringBuilder builder = new android.text.SpannableStringBuilder();
+            builder.append("  ");
+            Drawable drawable = ContextCompat.getDrawable(this, R.drawable.cart);
+            if (drawable != null) {
+                drawable = androidx.core.graphics.drawable.DrawableCompat.wrap(drawable.mutate());
+                androidx.core.graphics.drawable.DrawableCompat.setTint(drawable, textView.getCurrentTextColor());
+                int size = (int) (textView.getTextSize() * 1.1);
+                drawable.setBounds(0, 0, size, size);
+                android.text.style.ImageSpan imageSpan =
+                        new android.text.style.ImageSpan(drawable, android.text.style.ImageSpan.ALIGN_BOTTOM);
+                builder.setSpan(imageSpan, 0, 1, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+            builder.append(label);
+            textView.setText(builder);
+        } else {
+            textView.setText(label);
+        }
+        CustomFontHelper.setCustomFont(textView, "font_regular.ttf", this);
+        textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    }
+
     private boolean isBuyerChatCta(String buttonText) {
         if (buttonText == null) {
             return false;
         }
-        String trimmed = buttonText.trim();
+        // ImageSpan on the message icon can leave a replacement character in getText()
+        // on some devices. Strip that before comparing so the chat click still matches.
+        String trimmed = buttonText.replace("\uFFFC", "").replace("\u200B", "").trim();
         return trimmed.equalsIgnoreCase(getString(R.string.chat))
                 || trimmed.equalsIgnoreCase(getString(R.string.snatch_it_up));
     }
@@ -3032,7 +3082,7 @@ public class DetailActivity extends BaseActivity implements OnClickListener, Par
                             }
                         }
                     } else {
-                        if (Constants.BUYNOW) {
+                        if (Constants.BUYNOW || isBuyNowShippingProduct()) {
                             progressDialog.setMessage(getString(R.string.pleasewait));
                             progressDialog.setCancelable(false);
                             progressDialog.setCanceledOnTouchOutside(false);

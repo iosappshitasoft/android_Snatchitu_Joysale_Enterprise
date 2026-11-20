@@ -459,6 +459,162 @@
                     android:background="@color/line" />
 
                 <LinearLayout
+                    android:id="@+id/trackingLay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:visibility="gone">
+
+                    <com.ni.external.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:text="@string/tracking_details"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/primaryText"
+                        app:fonts="font_regular.ttf" />
+
+                    <com.ni.external.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:paddingStart="10dp"
+                        android:text="@string/tracking_id"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Small"
+                        android:textColor="@color/secondaryText"
+                        android:textSize="12sp"
+                        app:fonts="font_regular.ttf" />
+
+                    <com.ni.external.CustomTextView
+                        android:id="@+id/trackigId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="-"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/primaryText"
+                        app:fonts="font_regular.ttf" />
+
+                    <com.ni.external.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:text="@string/shipped_date"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Small"
+                        android:textColor="@color/secondaryText"
+                        android:textSize="12sp"
+                        app:fonts="font_regular.ttf" />
+
+                    <com.ni.external.CustomTextView
+                        android:id="@+id/trackingShipmentDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="-"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/primaryText"
+                        app:fonts="font_regular.ttf" />
+
+                    <com.ni.external.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:text="@string/logistic_name"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Small"
+                        android:textColor="@color/secondaryText"
+                        android:textSize="12sp"
+                        app:fonts="font_regular.ttf" />
+
+                    <com.ni.external.CustomTextView
+                        android:id="@+id/trackingLogisticName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="-"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/primaryText"
+                        app:fonts="font_regular.ttf" />
+
+                    <com.ni.external.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:text="@string/courier_service"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Small"
+                        android:textColor="@color/secondaryText"
+                        android:textSize="12sp"
+                        app:fonts="font_regular.ttf" />
+
+                    <com.ni.external.CustomTextView
+                        android:id="@+id/trackingCourierService"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="-"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/primaryText"
+                        app:fonts="font_regular.ttf" />
+
+                    <com.ni.external.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:text="@string/additional_notes"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Small"
+                        android:textColor="@color/secondaryText"
+                        android:textSize="12sp"
+                        app:fonts="font_regular.ttf" />
+
+                    <com.ni.external.CustomTextView
+                        android:id="@+id/trackingNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="-"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/primaryText"
+                        app:fonts="font_regular.ttf" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divider_height"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/line" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

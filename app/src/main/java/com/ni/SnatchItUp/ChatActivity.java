@@ -1264,16 +1264,23 @@ pickImage();
                             chats.addAll(backup);
 
                             if (Constants.ADDON_SMART_REPLY_ENABLED) {
-                                if (pageCount == 0) {
-                                    if (!response.body().getChats().getChats().get(0).getSender().equalsIgnoreCase(GetSet.getUserName())) {
-                                        if (response.body().getChats().getChats().get(0).getType().equalsIgnoreCase("normal")) {
-                                            //generateReplies(response.body().getChats().getChats().get(0).getMessage().getMessage());
-                                        }
+                                if (pageCount == 0
+                                        && response.body().getChats() != null
+                                        && response.body().getChats().getChats() != null
+                                        && !response.body().getChats().getChats().isEmpty()) {
+                                    ChatResponse.Chat latestChat = response.body().getChats().getChats().get(0);
+                                    if (latestChat.getSender() != null
+                                            && !latestChat.getSender().equalsIgnoreCase(GetSet.getUserName())
+                                            && latestChat.getType() != null
+                                            && latestChat.getType().equalsIgnoreCase("normal")) {
+                                        //generateReplies(latestChat.getMessage().getMessage());
                                     }
                                 }
                             }
 
-                            stringOfferCountryCode = chats.get(0).getOfferCurrencyCode();
+                            if (!chats.isEmpty() && chats.get(0) != null) {
+                                stringOfferCountryCode = chats.get(0).getOfferCurrencyCode();
+                            }
                             if (tempAry.size() == 0) {
                                 listView.setOnScrollListener(null);
                             } else {

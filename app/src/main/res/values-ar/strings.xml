@@ -70,7 +70,7 @@
     <string name="discount">خصم</string>
     <string name="discounted">خصم</string>
     <string name="affiliate_profile_name">SNATCHITUP</string>
-    <string name="snatch_it_up">SNATCHITUP</string>
+    <string name="snatch_it_up">SNATCH IT UP</string>
     <string name="promo_applied">تم تطبيق الرمز الترويجي</string>
     <string name="copy">نسخ</string>
     <string name="promo_code_copied">تم نسخ الرمز الترويجي</string>
@@ -254,6 +254,9 @@
     <string name="courier_name">ساعي اسم</string>
     <string name="courier_service">خدمة الساعي</string>
     <string name="tracking_id">يتعقب ID</string>
+    <string name="tracking_details">تفاصيل التتبع</string>
+    <string name="logistic_name">اسم الشركة اللوجستية</string>
+    <string name="additional_notes">ملاحظات إضافية</string>
     <string name="other_details">مزيد من المعلومات</string>
     <string name="shipping_details">معلومات الشحن</string>
     <string name="cancel_confirmation">هل أنت واثق؟</string>

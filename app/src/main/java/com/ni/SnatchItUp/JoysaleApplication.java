@@ -57,6 +57,7 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.FirebaseApp;
 import com.ni.addons.call.CallActivity;
 import com.ni.addons.call.CallNotificationService;
 import com.ni.helper.LocaleManager;
@@ -190,6 +191,12 @@ public class JoysaleApplication extends Application implements DefaultLifecycleO
     @Override
     public void onCreate() {
         super.onCreate();
+        // Initialize Firebase
+        // FirebaseApp.initializeApp(this);
+        FirebaseApp firebaseApp = FirebaseApp.initializeApp(this);
+
+        Log.d("FIREBASE_INIT", "Firebase app: " + firebaseApp);
+        Log.d("FIREBASE_INIT", "Firebase apps count: " + FirebaseApp.getApps(this).size());
         // Set default theme to Dark
         if (getSharedPreferences("JoysalePref", MODE_PRIVATE).getString("app_theme", "Dark").equals("Dark")) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -200,6 +207,8 @@ public class JoysaleApplication extends Application implements DefaultLifecycleO
         isCallPopup = false;
         startWorkManager();
         long maxSize = 50 * 1024 * 1024; // 50 MB
+
+
         // Addon Mapbox
         if (Constants.ADDON_MAP_BOX_ENABLED) {
        /*     MapboxNavigationApp.setup(
@@ -267,6 +276,8 @@ public class JoysaleApplication extends Application implements DefaultLifecycleO
             GetSet.setRating(Constants.pref.getString(Constants.TAG_RATING, "0"));
             GetSet.setRatingUserCount(Constants.pref.getString(Constants.TAG_RATING_USER_COUNT, "0"));
         }
+
+
     }
 
     public void startWorkManager() {
@@ -491,11 +502,17 @@ public class JoysaleApplication extends Application implements DefaultLifecycleO
 
     public static void hideSoftKeyboard(Activity context) {
         try {
-            if (context != null) {
-                InputMethodManager inputMethodManager = (InputMethodManager) context
-                        .getSystemService(Activity.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(context
-                        .getCurrentFocus().getWindowToken(), 0);
+            if (context == null) {
+                return;
+            }
+            View focused = context.getCurrentFocus();
+            if (focused == null) {
+                return;
+            }
+            InputMethodManager inputMethodManager = (InputMethodManager) context
+                    .getSystemService(Activity.INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null) {
+                inputMethodManager.hideSoftInputFromWindow(focused.getWindowToken(), 0);
             }
         } catch (Exception npe) {
             npe.printStackTrace();

@@ -342,20 +342,16 @@ public class MyOrder extends Fragment
             try {
                 final MySalesResponse.Result result = Items.get(position);
 
-                /*
-                 * if (result.getStatus().equalsIgnoreCase("shipped")) {
-                 * holder.orderstatus.setVisibility(View.VISIBLE);
-                 * holder.orderstatus.setText(getString(R.string.item_shipped));
-                 * holder.orderstatus.setBackground(getResources().getDrawable(R.drawable.
-                 * orange_round_corner));
-                 * if (result.getSaledate() != null && !result.getSaledate().equals("")) {
-                 * long ordDate = Long.parseLong(result.getSaledate());
-                 * date = JoysaleApplication.getDate(getActivity(), ordDate);
-                 * }
-                 * holder.time.setText(getString(R.string.order_on) + " " + date);
-                 * 
-                 * } else
-                 */ if (result.getStatus().equalsIgnoreCase("delivered") ||
+                if (result.getStatus().equalsIgnoreCase("shipped")) {
+                    holder.orderstatus.setVisibility(View.VISIBLE);
+                    holder.orderstatus.setText(getString(R.string.item_shipped));
+                    holder.orderstatus.setBackground(getResources().getDrawable(R.drawable.orange_round_corner));
+                    if (result.getSaledate() != null && !result.getSaledate().equals("")) {
+                        long ordDate = Long.parseLong(result.getSaledate());
+                        date = JoysaleApplication.getDate(getActivity(), ordDate);
+                    }
+                    holder.time.setText(getString(R.string.order_on) + " " + date);
+                } else if (result.getStatus().equalsIgnoreCase("delivered") ||
                         result.getStatus().equalsIgnoreCase("paid")) {
                     holder.orderstatus.setVisibility(View.VISIBLE);
                     holder.orderstatus.setText(getString(R.string.item_delivered));

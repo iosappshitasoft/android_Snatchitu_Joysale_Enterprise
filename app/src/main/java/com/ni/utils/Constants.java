@@ -39,16 +39,16 @@ public class Constants {
      * App Urls
      **/
 
-    // Live url
-    public static final String SITE_URL = "https://snatchitup.com/"; //your site url
+    // Live url - sivashankari
+   /* public static final String SITE_URL = "https://snatchitup.com/"; //your site url
     public static final String URL = SITE_URL + "api/";
     public static String SOCKET_URL = "https://snatchitup.com:8087"; //socket url
+*/
 
     //Dev Url
-  /*  public static final String SITE_URL = "https://services.hitasoft.in/snatchitup/"; //your site url
+    public static final String SITE_URL = "http://3.23.60.236/"; //your site url
     public static final String URL = SITE_URL + "api/";
-    public static String SOCKET_URL = "https://services.hitasoft.in:8091"; //socket url*/
-
+    public static String SOCKET_URL = "http://3.23.60.236:8087"; //socket url
 
     public static final String API_UPLOAD_IMAGE = URL + "uploadimage";
     public static String APPRTC_URL = "http://yoursiteurl.in:yoursocketport";
@@ -89,9 +89,15 @@ public class Constants {
     public static int HOME_BANNER_WIDTH = 1024, HOME_BANNER_HEIGHT = 500;
     public static int IMAGE_COUNT = 5;
 
+   /* public static String ADMOB_BANNER_ID = "ca-app-pub-9552829837499366/4470536152"; // snatchitup_banner
+    public static String INTERSTITIAL_AD_ID = "ca-app-pub-9552829837499366/6507115513"; // interstitial
+    public static String ADMOB_SQUARE_ID = "ca-app-pub-9552829837499366/5588463397"; // square / MREC
+    */
+
     public static String ADMOB_BANNER_ID = "ca-app-pub-9552829837499366/4470536152"; // snatchitup_banner
     public static String INTERSTITIAL_AD_ID = "ca-app-pub-9552829837499366/6507115513"; // interstitial
     public static String ADMOB_SQUARE_ID = "ca-app-pub-9552829837499366/5588463397"; // square / MREC
+
     public static String TAG_GOOGLEADS_STATUS = "google_ads";
     public static String TAG_APPRTC = "apprtc_url";
 
@@ -192,6 +198,9 @@ public class Constants {
     public static final String TAG_PROMO_CODE = "promo_code";
     public static final String TAG_IS_AFFILIATE = "is_affiliate";
     public static final String TAG_AFFILIATE_URL = "affiliate_url";
+    public static final String TAG_PRODUCT_DELIVERY_TYPE = "product_delivery_type";
+    public static final String DELIVERY_TYPE_LOCAL_MEETUP = "local_meetup";
+    public static final String DELIVERY_TYPE_BUY_NOW_SHIPPING = "buy_now_shipping";
     public static final String TAG_EXCHANGE_BUY = "exchange_buy";
     public static final String TAG_MAKE_OFFER = "make_offer";
     public static final String TAG_SELLER_USERNAME = "seller_username";

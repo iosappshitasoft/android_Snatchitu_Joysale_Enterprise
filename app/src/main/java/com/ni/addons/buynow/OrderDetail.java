@@ -107,11 +107,11 @@ public class OrderDetail extends BaseActivity implements View.OnClickListener {
     TextView itemName, itemPrice, chatseller, orderstatus, title, orderid, orderDateTxt, shippedDateTxt,
             deliveryDateTxt,
             sellername, selrtext, paymenttype, transactionid, orderdate, shipdate, deliverydate, price, shipingprice,
-            total,
+            total, trackingId, trackingShipmentDate, trackingLogisticName, trackingCourierService, trackingNotes,
             updateReview, nickName, fullName, addressLine, city, country, reviewTitle, ratingCount, review, editReview,
             reviewDate;
     RelativeLayout main, reviewLay;
-    LinearLayout writeReviewLay;
+    LinearLayout writeReviewLay, trackingLay;
 
     DisplayMetrics displayMetrics;
     RatingBar ratingBar;
@@ -175,6 +175,12 @@ public class OrderDetail extends BaseActivity implements View.OnClickListener {
         editReview = (TextView) findViewById(R.id.editReview);
         reviewLay = (RelativeLayout) findViewById(R.id.reviewLay);
         writeReviewLay = (LinearLayout) findViewById(R.id.writeReviewLay);
+        trackingLay = (LinearLayout) findViewById(R.id.trackingLay);
+        trackingId = (TextView) findViewById(R.id.trackigId);
+        trackingShipmentDate = (TextView) findViewById(R.id.trackingShipmentDate);
+        trackingLogisticName = (TextView) findViewById(R.id.trackingLogisticName);
+        trackingCourierService = (TextView) findViewById(R.id.trackingCourierService);
+        trackingNotes = (TextView) findViewById(R.id.trackingNotes);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         reviewDate = (TextView) findViewById(R.id.reviewDate);
 
@@ -606,9 +612,6 @@ public class OrderDetail extends BaseActivity implements View.OnClickListener {
             chatseller.setText(getString(R.string.chat_with_buyer));
             selrtext.setText(getString(R.string.buyer_name));
             sellername.setText(data.getOrderitems().getBuyerName());
-            if (data.getStatus().equalsIgnoreCase("processing")) {
-                settingbtn.setVisibility(View.GONE);
-            }
         }
 
         if (data.getStatus().equals("cancelled")) {
@@ -672,6 +675,7 @@ public class OrderDetail extends BaseActivity implements View.OnClickListener {
         city.setText(data.getShippingaddress().getCity() + "," + data.getShippingaddress().getState() + " , "
                 + data.getShippingaddress().getZipcode());
         country.setText(data.getShippingaddress().getCountryName() + "\n" + data.getShippingaddress().getPhone());
+        setTrackingDetails();
 
         if (from.equals("sale") || data.getReviewId().equals("0")) {
             reviewLay.setVisibility(View.GONE);
@@ -731,17 +735,59 @@ public class OrderDetail extends BaseActivity implements View.OnClickListener {
                 }
                 settingbtn.setVisibility(View.GONE);
                 break;
-            /*
-             * case "shipped":
-             * orderstatus.setText(getString(R.string.item_shipped));
-             * orderstatus.setBackground(getResources().getDrawable(R.drawable.
-             * orange_round_corner));
-             * break;
-             */
+            case "shipped":
+                orderstatus.setText(getString(R.string.item_shipped));
+                orderstatus.setBackground(getResources().getDrawable(R.drawable.orange_round_corner));
+                break;
         }
 
         orderstatus.setPadding(leftPadding, topPadding, leftPadding, topPadding);
 
+    }
+
+    /**
+     * Show courier tracking for both buyer and seller once the order is shipped or delivered.
+     */
+    private void setTrackingDetails() {
+        MySalesResponse.Trackingdetails tracking = data.getTrackingdetails();
+        String status = data.getStatus() == null ? "" : data.getStatus();
+        boolean showTracking = tracking != null
+                && (status.equalsIgnoreCase("shipped")
+                || status.equalsIgnoreCase("delivered")
+                || status.equalsIgnoreCase("paid")
+                || status.equalsIgnoreCase("claimed"));
+        if (!showTracking) {
+            trackingLay.setVisibility(View.GONE);
+            return;
+        }
+        trackingLay.setVisibility(View.VISIBLE);
+        trackingId.setText(trackingValue(tracking.getTrackingid()));
+        trackingLogisticName.setText(trackingValue(tracking.getCouriername()));
+        trackingCourierService.setText(trackingValue(tracking.getCourierservice()));
+        trackingNotes.setText(trackingValue(tracking.getNotes()));
+
+        String shipmentDate = "-";
+        try {
+            if (tracking.getShippingdate() != null
+                    && !tracking.getShippingdate().equals("")
+                    && !tracking.getShippingdate().equals("0")) {
+                long shipDate = Long.parseLong(tracking.getShippingdate());
+                shipmentDate = JoysaleApplication.getDate(OrderDetail.this, shipDate);
+                if (shipmentDate == null || shipmentDate.equals("")) {
+                    shipmentDate = "-";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        trackingShipmentDate.setText(shipmentDate);
+    }
+
+    private String trackingValue(String value) {
+        if (value == null || value.trim().isEmpty()) {
+            return "-";
+        }
+        return value.trim();
     }
 
     /**
@@ -759,12 +805,10 @@ public class OrderDetail extends BaseActivity implements View.OnClickListener {
                 }
             } else if (data.getStatus().equalsIgnoreCase("processing")) {
                 if (from.equals("sale")) {
-                    // values = new String[]{getString(R.string.mark_as_shipped)}; // Hide for
-                    // seller
+                    // Restored: Seller can mark order as shipped and enter tracking ID
+                    values = new String[] { getString(R.string.mark_as_shipped) };
                 } else if (data.getCancel().equalsIgnoreCase("true")) {
                     values = new String[] { getString(R.string.cancel_your_order) };
-                } else if (from.equals("order")) {
-                    values = new String[] { getString(R.string.mark_as_received) }; // Add for Buyer
                 }
             } else if (data.getStatus().equalsIgnoreCase("shipped")) {
                 if (from.equals("sale")) {
@@ -780,12 +824,12 @@ public class OrderDetail extends BaseActivity implements View.OnClickListener {
                 }
             } else if (data.getStatus().equalsIgnoreCase("delivered")) {
                 if (from.equals("sale") && data.getClaim().equals("true")) {
-                    // values = new String[]{getString(R.string.shipping_details),
-                    // getString(R.string.mark_as_claimed)};
-                    values = new String[] { getString(R.string.mark_as_claimed) };
+                    // Restored: Seller can view shipping details along with mark as claimed
+                    values = new String[] { getString(R.string.shipping_details),
+                            getString(R.string.mark_as_claimed) };
                 } else {
-                    // values = new String[]{getString(R.string.shipping_details)};
-                    // Hide for buyer as well
+                    // Restored: Buyer can view shipping details
+                    values = new String[] { getString(R.string.shipping_details) };
                 }
             } else if (data.getStatus().equalsIgnoreCase("claimed")) {
                 if (from.equals("sale")) {
@@ -835,58 +879,51 @@ public class OrderDetail extends BaseActivity implements View.OnClickListener {
                                 && data.getCancel().equalsIgnoreCase("true")) {
                             confirmdialog(getString(R.string.cancel_confirmation), "cancel");
                         } else if (data.getStatus().equalsIgnoreCase("processing") && from.equals("sale")) {
-                            /*
-                             * Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
-                             * j.putExtra(Constants.TAG_DATA, data);
-                             * j.putExtra(Constants.TAG_FROM, from);
-                             * j.putExtra("position", position);
-                             * startActivity(j);
-                             */
+                            // Restored: Opens ShippingDetail so seller can enter Tracking ID & mark as shipped
+                            Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
+                            j.putExtra(Constants.TAG_DATA, data);
+                            j.putExtra(Constants.TAG_FROM, from);
+                            j.putExtra("position", position);
+                            startActivity(j);
                         } else if (data.getStatus().equalsIgnoreCase("processing")
                                 && data.getCancel().equalsIgnoreCase("true")) {
                             confirmdialog(getString(R.string.cancel_confirmation), "cancel");
-                        } else if (data.getStatus().equalsIgnoreCase("processing") && from.equals("order")) {
-                            confirmdialog(getString(R.string.deliver_confirmation), "Delivered");
-                        } /*
-                           * else if (data.getStatus().equalsIgnoreCase("shipped") && from.equals("sale"))
-                           * {
-                           * Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
-                           * j.putExtra(Constants.TAG_DATA, data);
-                           * j.putExtra(Constants.TAG_FROM, from);
-                           * j.putExtra("position", position);
-                           * startActivity(j);
-                           * } else if (data.getStatus().equalsIgnoreCase("shipped")) {
-                           * Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
-                           * j.putExtra(Constants.TAG_DATA, data);
-                           * j.putExtra(Constants.TAG_FROM, from);
-                           * j.putExtra("position", position);
-                           * startActivity(j);
-                           * }
-                           */ else if (data.getStatus().equalsIgnoreCase("delivered")) {
-                            /*
-                             * Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
-                             * j.putExtra(Constants.TAG_DATA, data);
-                             * j.putExtra(Constants.TAG_FROM, from);
-                             * j.putExtra("position", position);
-                             * startActivity(j);
-                             */
+                        } else if (data.getStatus().equalsIgnoreCase("shipped") && from.equals("sale")) {
+                            // Restored: Opens ShippingDetail so seller can edit tracking details
+                            Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
+                            j.putExtra(Constants.TAG_DATA, data);
+                            j.putExtra(Constants.TAG_FROM, from);
+                            j.putExtra("position", position);
+                            startActivity(j);
+                        } else if (data.getStatus().equalsIgnoreCase("shipped")) {
+                            // Restored: Opens ShippingDetail in read-only mode so buyer can view Tracking ID
+                            Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
+                            j.putExtra(Constants.TAG_DATA, data);
+                            j.putExtra(Constants.TAG_FROM, from);
+                            j.putExtra("position", position);
+                            startActivity(j);
+                        } else if (data.getStatus().equalsIgnoreCase("delivered")) {
+                            // Restored: Opens ShippingDetail so user can view past shipping details for delivered order
+                            Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
+                            j.putExtra(Constants.TAG_DATA, data);
+                            j.putExtra(Constants.TAG_FROM, from);
+                            j.putExtra("position", position);
+                            startActivity(j);
                         } else if (data.getStatus().equalsIgnoreCase("claimed") && from.equals("sale")) {
-                            /*
-                             * Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
-                             * j.putExtra(Constants.TAG_DATA, data);
-                             * j.putExtra(Constants.TAG_FROM, from);
-                             * j.putExtra("position", position);
-                             * startActivity(j);
-                             */
+                            // Restored: Opens ShippingDetail to view shipping details
+                            Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
+                            j.putExtra(Constants.TAG_DATA, data);
+                            j.putExtra(Constants.TAG_FROM, from);
+                            j.putExtra("position", position);
+                            startActivity(j);
                         } else if (data.getStatus().equalsIgnoreCase("claimed") ||
                                 data.getStatus().equalsIgnoreCase("paid")) {
-                            /*
-                             * Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
-                             * j.putExtra(Constants.TAG_DATA, data);
-                             * j.putExtra(Constants.TAG_FROM, from);
-                             * j.putExtra("position", position);
-                             * startActivity(j);
-                             */
+                            // Restored: Opens ShippingDetail to view shipping details
+                            Intent j = new Intent(OrderDetail.this, ShippingDetail.class);
+                            j.putExtra(Constants.TAG_DATA, data);
+                            j.putExtra(Constants.TAG_FROM, from);
+                            j.putExtra("position", position);
+                            startActivity(j);
                         }
                         popup.dismiss();
                         break;

@@ -478,6 +478,7 @@
                 android:orientation="vertical"
                 android:visibility="visible">
 
+
                 <RelativeLayout
                     android:id="@+id/buyLay"
                     android:layout_width="match_parent"
@@ -490,26 +491,31 @@
                         android:id="@+id/buySwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:theme="@style/SwitchTheme" />
+                        android:visibility="gone" />
 
                     <com.ni.external.CustomTextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:singleLine="true"
-                        android:text="@string/instantbuy"
+                        android:text="@string/delivery_type"
                         android:textColor="@color/primaryText"
                         android:textSize="@dimen/text_medium"
                         app:fonts="font_regular.ttf" />
-                </RelativeLayout>
 
+                    <Spinner
+                        android:id="@+id/deliveryTypeSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:minWidth="160dp"
+                        android:spinnerMode="dropdown" />
+                </RelativeLayout>
                 <LinearLayout
                     android:id="@+id/buynowLay"
                     android:layout_width="match_parent"

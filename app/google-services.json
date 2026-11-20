@@ -59,6 +59,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "617783976080-a4lsavnbd8hgah34q3vrfcq8h4aer1a1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ni.SnatchItUp",
+            "certificate_hash": "5c4f2ce2d33122d9f76ca279f1c8b23c3c18ca75"
+          }
+        },
+        {
           "client_id": "617783976080-ad8ahq83uc93gjp651mhlafrraap41cp.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

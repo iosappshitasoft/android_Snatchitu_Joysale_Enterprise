@@ -112,6 +112,9 @@ public class HomeItemResponse implements Serializable {
         private String emailVerification;
         @SerializedName("exchange_buy")
         private String exchangeBuy;
+        @SerializedName("product_delivery_type")
+        @Expose
+        private String productDeliveryType;
         @SerializedName("facebook_verification")
         private String facebookVerification;
         @SerializedName("filters")
@@ -283,6 +286,14 @@ public class HomeItemResponse implements Serializable {
 
         public void setExchangeBuy(String exchangeBuy) {
             this.exchangeBuy = exchangeBuy;
+        }
+
+        public String getProductDeliveryType() {
+            return productDeliveryType;
+        }
+
+        public void setProductDeliveryType(String productDeliveryType) {
+            this.productDeliveryType = productDeliveryType;
         }
 
         public String getFacebookVerification() {

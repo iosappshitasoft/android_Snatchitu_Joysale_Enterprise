@@ -101,7 +101,7 @@
     <string name="discount">Discounted</string>
     <string name="discounted">Discounted</string>
     <string name="affiliate_profile_name">SNATCHITUP</string>
-    <string name="snatch_it_up">SNATCHITUP</string>
+    <string name="snatch_it_up">SNATCH IT UP</string>
     <string name="promo_applied">Promo code applied</string>
     <string name="copy">Copy</string>
     <string name="promo_code_copied">Promo code copied</string>
@@ -286,6 +286,9 @@
     <string name="courier_name">COURIER NAME</string>
     <string name="courier_service">COURIER SERVICE</string>
     <string name="tracking_id">TRACKING ID</string>
+    <string name="tracking_details">TRACKING DETAILS</string>
+    <string name="logistic_name">LOGISTIC NAME</string>
+    <string name="additional_notes">ADDITIONAL NOTES</string>
     <string name="other_details">More info</string>
     <string name="shipping_details">Shipping info</string>
     <string name="cancel_confirmation">Are you sure?</string>
@@ -978,5 +981,8 @@
     <string name="dark">Dark</string>
     <string name="light">Light</string>
     <string name="discounted_percent_format">Discounted (%1$s%% OFF)</string>
+    <string name="buynoworshipping">Buy Now / Shipping</string>
+    <string name="localmeetup">Local Meetup</string>
+    <string name="delivery_type">Delivery Type</string>
 
 </resources>

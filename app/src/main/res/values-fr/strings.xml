@@ -68,7 +68,7 @@
     <string name="discount">Remise</string>
     <string name="discounted">Remise</string>
     <string name="affiliate_profile_name">SNATCHITUP</string>
-    <string name="snatch_it_up">SNATCHITUP</string>
+    <string name="snatch_it_up">SNATCH IT UP</string>
     <string name="promo_applied">Code promo appliqué</string>
     <string name="copy">Copier</string>
     <string name="promo_code_copied">Code promo copié</string>
@@ -252,6 +252,9 @@
     <string name="courier_name">NOM DE MESSAGERIE</string>
     <string name="courier_service">MESSAGERIE</string>
     <string name="tracking_id">POURSUITE ID</string>
+    <string name="tracking_details">DÉTAILS DE SUIVI</string>
+    <string name="logistic_name">NOM LOGISTIQUE</string>
+    <string name="additional_notes">NOTES SUPPLÉMENTAIRES</string>
     <string name="other_details">Plus d\'informations</string>
     <string name="shipping_details">Informations de livraison</string>
     <string name="cancel_confirmation">Êtes-vous sûr?</string>

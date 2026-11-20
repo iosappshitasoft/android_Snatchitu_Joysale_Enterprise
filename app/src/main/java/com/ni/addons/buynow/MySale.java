@@ -312,21 +312,16 @@ public class MySale extends Fragment
             try {
                 final MySalesResponse.Result result = Items.get(position);
 
-                /*
-                 * if (result.getStatus().equalsIgnoreCase("shipped")) {
-                 * holder.orderstatus.setVisibility(View.VISIBLE);
-                 * holder.orderstatus.setText(getString(R.string.item_shipped));
-                 * 
-                 * holder.orderstatus.setBackground(getResources().getDrawable(R.drawable.
-                 * orange_round_corner));
-                 * if (result.getSaledate() != null && !result.getSaledate().equals("")) {
-                 * long ordDate = Long.parseLong(result.getSaledate());
-                 * date = JoysaleApplication.getDate(getActivity(), ordDate);
-                 * }
-                 * holder.time.setText(getString(R.string.order_on) + " " + date);
-                 * 
-                 * } else
-                 */ if (result.getStatus().equalsIgnoreCase("delivered")) {
+                if (result.getStatus().equalsIgnoreCase("shipped")) {
+                    holder.orderstatus.setVisibility(View.VISIBLE);
+                    holder.orderstatus.setText(getString(R.string.item_shipped));
+                    holder.orderstatus.setBackground(getResources().getDrawable(R.drawable.orange_round_corner));
+                    if (result.getSaledate() != null && !result.getSaledate().equals("")) {
+                        long ordDate = Long.parseLong(result.getSaledate());
+                        date = JoysaleApplication.getDate(getActivity(), ordDate);
+                    }
+                    holder.time.setText(getString(R.string.order_on) + " " + date);
+                } else if (result.getStatus().equalsIgnoreCase("delivered")) {
                     holder.orderstatus.setVisibility(View.VISIBLE);
                     holder.orderstatus.setText(getString(R.string.item_delivered));
                     holder.orderstatus.setBackground(getResources().getDrawable(R.drawable.round_corner_primary));
